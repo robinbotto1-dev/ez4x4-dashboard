@@ -331,11 +331,11 @@ And for the "both" crowd - when do you swap?`,
 function renderDocs() {
   // Categorize documents
   const categories = {
-    reports: { icon: '📄', title: 'Reports', docs: [] },
-    strategy: { icon: '🎯', title: 'Strategy', docs: [] },
-    competitors: { icon: '📊', title: 'Competitor Intel', docs: [] },
-    influencers: { icon: '👤', title: 'Influencers', docs: [] },
-    other: { icon: '📁', title: 'Other', docs: [] }
+    strategy: { icon: '🎯', docs: [] },
+    products: { icon: '📦', docs: [] },
+    reports: { icon: '📈', docs: [] },
+    competitors: { icon: '📊', docs: [] },
+    other: { icon: '📁', docs: [] }
   };
   
   // Sort docs into categories
@@ -350,29 +350,16 @@ function renderDocs() {
       return '<li class="empty">No documents yet</li>';
     }
     return docs.map(d => 
-      `<li><a href="#" onclick="openDoc('${d.file}'); return false;">${icon} ${d.title}</a>
-       <span class="doc-date">${d.createdAt || ''}</span></li>`
+      `<li>
+        <a href="#" onclick="openDoc('${d.file}'); return false;">${icon} ${d.title}</a>
+        <span class="doc-date">${d.createdAt || ''}</span>
+      </li>`
     ).join('');
   };
   
-  document.getElementById('reportsList').innerHTML = renderList(categories.reports.docs, '📄');
-  document.getElementById('competitorList').innerHTML = renderList(categories.competitors.docs, '📊');
-  document.getElementById('influencerList').innerHTML = renderList(categories.influencers.docs, '👤');
-  
-  // Add strategy docs to a section if we have them
-  if (categories.strategy.docs.length > 0) {
-    const strategyList = document.createElement('div');
-    strategyList.className = 'doc-category';
-    strategyList.innerHTML = `
-      <h3>🎯 Strategy</h3>
-      <ul>${renderList(categories.strategy.docs, '🎯')}</ul>
-    `;
-    const grid = document.querySelector('.docs-grid');
-    if (grid && !document.getElementById('strategyList')) {
-      strategyList.id = 'strategyListContainer';
-      grid.appendChild(strategyList);
-    }
-  }
+  document.getElementById('strategyList').innerHTML = renderList(categories.strategy.docs, '🎯');
+  document.getElementById('productsList').innerHTML = renderList(categories.products.docs, '📦');
+  document.getElementById('reportsList').innerHTML = renderList(categories.reports.docs, '📈');
 }
 
 // Actions

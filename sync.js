@@ -98,7 +98,7 @@ async function syncData() {
         JSON.stringify(manifest, null, 2)
       );
       
-      // Copy doc files
+      // Copy doc files (including subfolders)
       const docsOutDir = path.join(DATA_DIR, 'docs');
       await fs.mkdir(docsOutDir, { recursive: true });
       
@@ -106,9 +106,12 @@ async function syncData() {
         const srcPath = path.join(docsDir, doc.file);
         const destPath = path.join(docsOutDir, doc.file);
         try {
+          // Create subfolder if needed
+          const destDir = path.dirname(destPath);
+          await fs.mkdir(destDir, { recursive: true });
           await fs.copyFile(srcPath, destPath);
         } catch (e) {
-          console.log(`   ⚠️ Could not copy ${doc.file}`);
+          console.log(`   ⚠️ Could not copy ${doc.file}: ${e.message}`);
         }
       }
       

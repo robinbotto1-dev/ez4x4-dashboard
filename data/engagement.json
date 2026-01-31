@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-31T20:32:45.661Z",
+  "generatedAt": "2026-01-31T21:10:30.839Z",
   "date": "2026-01-31",
   "opportunities": [
     {
@@ -344,7 +344,7 @@
       "url": "https://www.jlwranglerforums.com/forum/threads/picking-up-my-new-ride-this-afternoon.163208/",
       "description": "",
       "author": "rickinAZ",
-      "pubDate": "2026-01-31T20:04:17.000Z",
+      "pubDate": "2026-01-31T20:58:58.000Z",
       "products": [
         "Fliptop",
         "Hard Top Lift",
@@ -369,6 +369,42 @@
         "forum": "JL Wrangler Forums",
         "type": "community_engagement",
         "draft": "Congrats on the new ride! Welcome to the community.\n\nWhat made you go with this one? And what mods are you planning first?",
+        "productMention": null,
+        "confidence": "medium"
+      }
+    },
+    {
+      "forum": "JL Wrangler Forums",
+      "forumSlug": "jlwrangler",
+      "title": "Product R&amp;D Time - 2-Door JL Overland Shelf (American Adventure Lab)",
+      "url": "https://www.jlwranglerforums.com/forum/threads/product-r-d-time-2-door-jl-overland-shelf-american-adventure-lab.155532/",
+      "description": "",
+      "author": "Adventure Lab (Team)",
+      "pubDate": "2026-01-31T20:35:24.000Z",
+      "products": [
+        "Fliptop",
+        "Hard Top Lift",
+        "Door Cart",
+        "Tube Doors"
+      ],
+      "productCategory": "jeep",
+      "analysis": {
+        "isQuestion": false,
+        "isProductRelated": false,
+        "isPainPoint": false,
+        "isCommunity": true,
+        "triggers": [
+          "adventure"
+        ],
+        "score": 3,
+        "responseType": "community_engagement"
+      },
+      "suggestedResponse": {
+        "thread": "Product R&amp;D Time - 2-Door JL Overland Shelf (American Adventure Lab)",
+        "url": "https://www.jlwranglerforums.com/forum/threads/product-r-d-time-2-door-jl-overland-shelf-american-adventure-lab.155532/",
+        "forum": "JL Wrangler Forums",
+        "type": "community_engagement",
+        "draft": "That looks like an awesome trip! The scenery is incredible.\n\nHow did everything hold up? Any lessons learned for next time?",
         "productMention": null,
         "confidence": "medium"
       }
@@ -441,42 +477,6 @@
         "forum": "JL Wrangler Forums",
         "type": "community_engagement",
         "draft": "That looks like an awesome trip! The scenery is incredible.\n\nHow did everything hold up? Any lessons learned for next time?",
-        "productMention": null,
-        "confidence": "medium"
-      }
-    },
-    {
-      "forum": "JL Wrangler Forums",
-      "forumSlug": "jlwrangler",
-      "title": "New Apple Watch Face",
-      "url": "https://www.jlwranglerforums.com/forum/threads/new-apple-watch-face.24964/",
-      "description": "",
-      "author": "Jondrew",
-      "pubDate": "2026-01-31T17:43:38.000Z",
-      "products": [
-        "Fliptop",
-        "Hard Top Lift",
-        "Door Cart",
-        "Tube Doors"
-      ],
-      "productCategory": "jeep",
-      "analysis": {
-        "isQuestion": false,
-        "isProductRelated": false,
-        "isPainPoint": false,
-        "isCommunity": true,
-        "triggers": [
-          "new"
-        ],
-        "score": 3,
-        "responseType": "community_engagement"
-      },
-      "suggestedResponse": {
-        "thread": "New Apple Watch Face",
-        "url": "https://www.jlwranglerforums.com/forum/threads/new-apple-watch-face.24964/",
-        "forum": "JL Wrangler Forums",
-        "type": "community_engagement",
-        "draft": "Congrats on the new ride! Welcome to the community.\n\nWhat made you go with this one? And what mods are you planning first?",
         "productMention": null,
         "confidence": "medium"
       }

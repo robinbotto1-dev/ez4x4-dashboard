@@ -1,13 +1,77 @@
 {
-  "updatedAt": "2026-01-31T20:31:00.000Z",
+  "updatedAt": "2026-01-31T21:09:00.000Z",
   "documents": [
     {
       "id": "forum-strategy",
       "title": "Forum Strategy Playbook",
       "category": "strategy",
-      "description": "Best practices from Jay's forum meeting",
+      "description": "Best practices from Jay's forum meeting - posting times, giveaway strategy, rules",
       "file": "forum-strategy.md",
       "createdAt": "2026-01-31"
+    },
+    {
+      "id": "company-overview",
+      "title": "EZ4X4 Company Overview",
+      "category": "strategy",
+      "description": "Complete company profile, products, positioning, and brand info",
+      "file": "company-overview.md",
+      "createdAt": "2026-01-29"
+    },
+    {
+      "id": "faq-content",
+      "title": "FAQ Content Library",
+      "category": "strategy",
+      "description": "Pre-written FAQ answers for customer support and website",
+      "file": "faq-content.md",
+      "createdAt": "2026-01-28"
+    },
+    {
+      "id": "domination-plan",
+      "title": "Marketing Domination Plan",
+      "category": "strategy",
+      "description": "Full marketing strategy for forum and community domination",
+      "file": "marketing/domination-plan.md",
+      "createdAt": "2026-01-30"
+    },
+    {
+      "id": "candidate-channels",
+      "title": "Marketing Channel Candidates",
+      "category": "strategy",
+      "description": "Analysis of potential marketing channels and platforms",
+      "file": "marketing/candidate-channels.md",
+      "createdAt": "2026-01-29"
+    },
+    {
+      "id": "ad-copy-library",
+      "title": "Ad Copy Library",
+      "category": "strategy",
+      "description": "Pre-written ad copy for various platforms and products",
+      "file": "marketing/ad-copy-library.md",
+      "createdAt": "2026-01-28"
+    },
+    {
+      "id": "all-products",
+      "title": "All Product Descriptions",
+      "category": "products",
+      "description": "Complete product catalog with descriptions",
+      "file": "products/all-products.md",
+      "createdAt": "2026-01-28"
+    },
+    {
+      "id": "top-10-revised",
+      "title": "Top 10 Products (Revised)",
+      "category": "products",
+      "description": "Detailed descriptions for top 10 selling products",
+      "file": "products/top-10-revised.md",
+      "createdAt": "2026-01-29"
+    },
+    {
+      "id": "jan-2026-data-review",
+      "title": "January 2026 Data Review",
+      "category": "reports",
+      "description": "Monthly data analysis and performance review",
+      "file": "analysis/jan-2026-data-review.md",
+      "createdAt": "2026-01-30"
     }
   ]
 }
