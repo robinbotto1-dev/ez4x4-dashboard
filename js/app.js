@@ -855,34 +855,12 @@ async function showWorkspaceContent(workspace, workspaceId) {
         </div>
         ` : ''}
         
-        <!-- TIMELINE -->
+        <!-- RECENT ACTIVITY -->
         <div class="tl-section">
           <h3>📜 Recent</h3>
           <div class="tl-grid">${timelineHtml || '<p class="empty">No completions yet</p>'}</div>
+          ${completedHistory.length > 0 ? `<p class="view-history-link"><a href="#" onclick="handleNavClick('robin-history', 'robin', event); return false;">View ${completedHistory.length} completed items →</a></p>` : ''}
         </div>
-        
-        <!-- COMPLETED HISTORY -->
-        ${completedHistory.length > 0 ? `
-        <div class="history-section">
-          <div class="history-header">
-            <h3>✅ Completed</h3>
-            <button class="history-clear" onclick="clearHistory()">Clear all</button>
-          </div>
-          <div class="history-list">
-            ${completedHistory.slice(0, 10).map(h => {
-              const time = new Date(h.completedAt).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
-              return `
-                <div class="history-row">
-                  <span class="history-id">${h.id}</span>
-                  <span class="history-title">${h.title}</span>
-                  <span class="history-time">${time}</span>
-                  <button class="history-restore" onclick="restoreItem('${h.id}')">↩</button>
-                </div>
-              `;
-            }).join('')}
-          </div>
-        </div>
-        ` : ''}
       </section>
     `;
   }
@@ -916,36 +894,87 @@ function hideWorkspaceComingSoon() {
 async function showRobinHistory() {
   const content = document.querySelector('.content');
   
-  let activity = { completed: [] };
+  let activity = { timeline: {} };
+  let actions = { completedHistory: [] };
+  
   try {
     const res = await fetch('data/robin/activity.json?t=' + Date.now());
     if (res.ok) activity = await res.json();
   } catch (e) {}
   
-  const completed = activity.completed || [];
+  // Try localStorage first for completed items
+  const cached = localStorage.getItem('actions_data');
+  if (cached) {
+    try {
+      actions = JSON.parse(cached);
+    } catch (e) {}
+  } else {
+    try {
+      const res = await fetch('data/robin/actions.json?t=' + Date.now());
+      if (res.ok) actions = await res.json();
+    } catch (e) {}
+  }
+  
+  const timeline = activity.timeline || {};
+  const completedHistory = actions.completedHistory || [];
   
   const formatTime = (iso) => {
     const d = new Date(iso);
     return d.toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
   };
   
+  // Build timeline HTML
+  const timelineDates = Object.keys(timeline).sort().reverse();
+  const timelineHtml = timelineDates.map(date => {
+    const items = timeline[date] || [];
+    const dateLabel = new Date(date).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+    return `
+      <div class="history-day">
+        <div class="history-day-header">${dateLabel}</div>
+        ${items.map(item => `
+          <div class="history-day-item">
+            <span class="history-day-time">${item.time}</span>
+            <span class="history-day-task">✓ ${item.task}</span>
+            <span class="history-day-dur">${item.duration}</span>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }).join('');
+  
   content.innerHTML = `
     <section class="section active">
       <header class="section-header">
-        <h2>📜 Full Task History</h2>
+        <h2>📜 Full History</h2>
         <p>Everything we've done together</p>
       </header>
-      <div class="activity-list">
-        ${completed.map(task => `
-          <div class="activity-item">
-            <div class="activity-header">
-              <span class="activity-title">${task.task}</span>
-              <span class="activity-duration">${task.duration || ''}</span>
+      
+      <!-- Completed Queue Items -->
+      ${completedHistory.length > 0 ? `
+      <div class="history-block">
+        <div class="history-block-header">
+          <h3>✅ Completed Tasks & Blockers</h3>
+          <button class="history-clear" onclick="clearHistory()">Clear all</button>
+        </div>
+        <div class="history-list">
+          ${completedHistory.map(h => `
+            <div class="history-row">
+              <span class="history-id">${h.id}</span>
+              <span class="history-title">${h.title}</span>
+              <span class="history-time">${formatTime(h.completedAt)}</span>
+              <button class="history-restore" onclick="restoreItem('${h.id}')">↩</button>
             </div>
-            <p class="activity-details">${task.details || ''}</p>
-            <span class="activity-time">${formatTime(task.completedAt)}</span>
-          </div>
-        `).join('')}
+          `).join('')}
+        </div>
+      </div>
+      ` : ''}
+      
+      <!-- Robin's Work Timeline -->
+      <div class="history-block">
+        <h3>🦅 Robin's Work Log</h3>
+        <div class="history-timeline">
+          ${timelineHtml || '<p class="empty">No activity yet</p>'}
+        </div>
       </div>
     </section>
   `;
