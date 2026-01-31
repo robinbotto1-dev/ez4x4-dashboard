@@ -1,6 +1,6 @@
 {
-  "status": "idle",
-  "task": "Idle demo - watch me change!",
-  "updatedAt": "2026-01-31T20:59:32.564Z",
-  "details": "This is the blue idle status. Will turn green in about 15 seconds..."
+  "status": "online",
+  "task": "Back to online!",
+  "updatedAt": "2026-01-31T20:59:52.270Z",
+  "details": "Green means I'm available and monitoring. The status updated automatically without you refreshing!"
 }
