@@ -461,7 +461,11 @@ function updateStatusWidget(data) {
   
   // Preserve expanded state
   const isExpanded = widget.classList.contains('expanded');
-  widget.className = 'status-widget ' + (data.status || 'offline');
+  
+  // Clear all status classes and set new one
+  widget.classList.remove('online', 'working', 'idle', 'offline');
+  const status = data.status || 'offline';
+  widget.classList.add(status);
   if (isExpanded) widget.classList.add('expanded');
   
   const taskEl = widget.querySelector('.status-task');
@@ -501,9 +505,26 @@ function updateStatusWidget(data) {
   }
 }
 
-function toggleStatusExpand() {
+function toggleStatusExpand(event) {
+  // Don't toggle if clicking the refresh button
+  if (event && event.target.classList.contains('status-refresh-btn')) return;
   const widget = document.getElementById('statusWidget');
   widget.classList.toggle('expanded');
+}
+
+async function refreshStatus(event) {
+  event.stopPropagation();
+  const btn = event.target;
+  btn.textContent = '↻ Refreshing...';
+  btn.disabled = true;
+  
+  await loadStatus();
+  
+  btn.textContent = '✓ Updated!';
+  setTimeout(() => {
+    btn.textContent = '↻ Refresh Status';
+    btn.disabled = false;
+  }, 1500);
 }
 
 // Poll status every 30 seconds
