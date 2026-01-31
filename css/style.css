@@ -1974,3 +1974,16 @@ body.locked .status-widget {
 .clickable:active {
   transform: scale(0.95);
 }
+
+/* Task link icon */
+.q-link {
+  text-decoration: none;
+  font-size: 12px;
+  opacity: 0.6;
+  transition: opacity 0.15s;
+  margin-left: 6px;
+}
+
+.q-link:hover {
+  opacity: 1;
+}

@@ -722,18 +722,22 @@ async function showWorkspaceContent(workspace, workspaceId) {
       if (res.ok) activity = await res.json();
     } catch (e) {}
     
-    // Try localStorage first (has latest state), fallback to server
-    const cached = localStorage.getItem('actions_data');
-    if (cached) {
-      try {
-        actions = JSON.parse(cached);
-      } catch (e) {}
-    } else {
-      try {
-        const res = await fetch('data/robin/actions.json?t=' + Date.now());
-        if (res.ok) actions = await res.json();
-      } catch (e) {}
-    }
+    // Always fetch fresh data from server, merge with localStorage completed items
+    try {
+      const res = await fetch('data/robin/actions.json?t=' + Date.now());
+      if (res.ok) {
+        const serverData = await res.json();
+        // Merge with localStorage completed history
+        const cached = localStorage.getItem('actions_data');
+        if (cached) {
+          try {
+            const localData = JSON.parse(cached);
+            serverData.completedHistory = localData.completedHistory || [];
+          } catch (e) {}
+        }
+        actions = serverData;
+      }
+    } catch (e) {}
     
     const stats = activity.stats || {};
     const timeline = activity.timeline || {};
@@ -809,7 +813,7 @@ async function showWorkspaceContent(workspace, workspaceId) {
             ${gabrielQueue.filter(a => !a.completed).map(a => `
               <div class="queue-row" data-id="${a.id}">
                 <span class="q-id clickable" onclick="copyId('${a.id}')" title="Click to copy">${a.id}</span>
-                <span class="q-task">${a.link ? `<a href="${a.link}" target="_blank">${a.title}</a>` : a.title}</span>
+                <span class="q-task">${a.title}${a.link ? ` <a href="${a.link}" target="_blank" class="q-link" title="View doc">🔗</a>` : ''}</span>
                 <span class="q-impact">${a.impact.replace('Quick win - ', '').replace('Unblocks ', '→ ')}</span>
                 <span class="q-time">${a.effort}</span>
                 <button class="q-btn" onclick="completeItem('${a.id}')">✓</button>
