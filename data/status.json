@@ -1,6 +1,6 @@
 {
-  "status": "online",
-  "task": "Back to online!",
-  "updatedAt": "2026-01-31T20:59:52.270Z",
-  "details": "Green means I'm available and monitoring. The status updated automatically without you refreshing!"
+  "status": "idle",
+  "task": "Testing blue...",
+  "updatedAt": "2026-01-31T21:00:57.766Z",
+  "details": "This should be BLUE"
 }
