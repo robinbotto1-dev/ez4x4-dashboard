@@ -1,6 +1,6 @@
 {
-  "status": "available",
-  "task": "Ready",
-  "updatedAt": "2026-01-31T21:58:24.965Z",
-  "details": "Redesigned queues as compact Stripe-style tables"
+  "status": "working",
+  "task": "Setting up Shopify API",
+  "updatedAt": "2026-01-31T21:58:51.981Z",
+  "details": "Connecting to EZ4X4 Shopify for real metrics"
 }
