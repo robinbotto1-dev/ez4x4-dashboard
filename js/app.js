@@ -1,7 +1,7 @@
 // Command Center - Main App
 
 // State
-let currentWorkspace = localStorage.getItem('currentWorkspace') || 'ez4x4';
+let currentWorkspace = localStorage.getItem('currentWorkspace') || 'robin';
 let engagementData = [];
 let intelData = [];
 let threadData = [];
@@ -38,9 +38,16 @@ document.addEventListener('DOMContentLoaded', async () => {
   loadStatus(); // Load status even before auth
   if (!checkAuth()) return;
   setupNavigation();
-  await loadData();
-  renderAll();
-  updateProgress();
+  
+  // Load default workspace
+  const workspace = workspaces[currentWorkspace];
+  if (currentWorkspace === 'robin' || currentWorkspace === 'founderchat') {
+    showWorkspaceContent(workspace, currentWorkspace);
+  } else {
+    await loadData();
+    renderAll();
+    updateProgress();
+  }
 });
 
 // Simple auth gate
