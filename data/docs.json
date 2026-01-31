@@ -1,0 +1,13 @@
+{
+  "updatedAt": "2026-01-31T20:31:00.000Z",
+  "documents": [
+    {
+      "id": "forum-strategy",
+      "title": "Forum Strategy Playbook",
+      "category": "strategy",
+      "description": "Best practices from Jay's forum meeting",
+      "file": "forum-strategy.md",
+      "createdAt": "2026-01-31"
+    }
+  ]
+}

@@ -4,6 +4,7 @@
 let engagementData = [];
 let intelData = [];
 let threadData = [];
+let docsData = [];
 let completedItems = JSON.parse(localStorage.getItem('ez4x4_completed') || '{}');
 
 // Initialize
@@ -84,6 +85,17 @@ async function loadData() {
     }
   } catch (e) {
     console.log('No strategy doc yet');
+  }
+  
+  // Load documents
+  try {
+    const docsRes = await fetch('data/docs.json');
+    if (docsRes.ok) {
+      const data = await docsRes.json();
+      docsData = data.documents || [];
+    }
+  } catch (e) {
+    console.log('No docs data yet');
   }
 }
 
@@ -241,34 +253,50 @@ And for the "both" crowd - when do you swap?`,
 
 // Render documents
 function renderDocs() {
-  // This would list actual documents - placeholder for now
-  const reports = [
-    { name: 'Daily Intel - Jan 31', url: '#' },
-    { name: 'Forum Engagement - Jan 31', url: '#' }
-  ];
+  // Categorize documents
+  const categories = {
+    reports: { icon: '📄', title: 'Reports', docs: [] },
+    strategy: { icon: '🎯', title: 'Strategy', docs: [] },
+    competitors: { icon: '📊', title: 'Competitor Intel', docs: [] },
+    influencers: { icon: '👤', title: 'Influencers', docs: [] },
+    other: { icon: '📁', title: 'Other', docs: [] }
+  };
   
-  const competitors = [
-    { name: 'Competitor Ad Analysis', url: '#' },
-    { name: 'Bestop Strategy', url: '#' },
-    { name: 'Quadratec Watch', url: '#' }
-  ];
+  // Sort docs into categories
+  for (const doc of docsData) {
+    const cat = categories[doc.category] || categories.other;
+    cat.docs.push(doc);
+  }
   
-  const influencers = [
-    { name: 'Micro-Influencer List', url: '#' },
-    { name: 'Bronco Creators', url: '#' }
-  ];
+  // Render each category
+  const renderList = (docs, icon) => {
+    if (docs.length === 0) {
+      return '<li class="empty">No documents yet</li>';
+    }
+    return docs.map(d => 
+      `<li><a href="#" onclick="openDoc('${d.file}'); return false;">${icon} ${d.title}</a>
+       <span class="doc-date">${d.createdAt || ''}</span></li>`
+    ).join('');
+  };
   
-  document.getElementById('reportsList').innerHTML = reports.map(d => 
-    `<li><a href="${d.url}">📄 ${d.name}</a></li>`
-  ).join('');
+  document.getElementById('reportsList').innerHTML = renderList(categories.reports.docs, '📄');
+  document.getElementById('competitorList').innerHTML = renderList(categories.competitors.docs, '📊');
+  document.getElementById('influencerList').innerHTML = renderList(categories.influencers.docs, '👤');
   
-  document.getElementById('competitorList').innerHTML = competitors.map(d => 
-    `<li><a href="${d.url}">📊 ${d.name}</a></li>`
-  ).join('');
-  
-  document.getElementById('influencerList').innerHTML = influencers.map(d => 
-    `<li><a href="${d.url}">👤 ${d.name}</a></li>`
-  ).join('');
+  // Add strategy docs to a section if we have them
+  if (categories.strategy.docs.length > 0) {
+    const strategyList = document.createElement('div');
+    strategyList.className = 'doc-category';
+    strategyList.innerHTML = `
+      <h3>🎯 Strategy</h3>
+      <ul>${renderList(categories.strategy.docs, '🎯')}</ul>
+    `;
+    const grid = document.querySelector('.docs-grid');
+    if (grid && !document.getElementById('strategyList')) {
+      strategyList.id = 'strategyListContainer';
+      grid.appendChild(strategyList);
+    }
+  }
 }
 
 // Actions
@@ -318,6 +346,50 @@ function showToast(message) {
     toast.classList.remove('show');
     setTimeout(() => toast.remove(), 300);
   }, 2000);
+}
+
+// Open and display a document
+async function openDoc(filename) {
+  try {
+    const res = await fetch(`data/docs/${filename}`);
+    if (res.ok) {
+      const text = await res.text();
+      
+      // Create modal
+      const modal = document.createElement('div');
+      modal.className = 'doc-modal';
+      modal.innerHTML = `
+        <div class="doc-modal-content">
+          <button class="doc-modal-close" onclick="this.parentElement.parentElement.remove()">✕</button>
+          <div class="doc-modal-body">${simpleMarkdown(text)}</div>
+        </div>
+      `;
+      document.body.appendChild(modal);
+      
+      // Close on backdrop click
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) modal.remove();
+      });
+    }
+  } catch (e) {
+    console.error('Error loading doc:', e);
+  }
+}
+
+// Simple markdown parser (headings, lists, bold)
+function simpleMarkdown(text) {
+  return text
+    .replace(/^### (.*$)/gm, '<h4>$1</h4>')
+    .replace(/^## (.*$)/gm, '<h3>$1</h3>')
+    .replace(/^# (.*$)/gm, '<h2>$1</h2>')
+    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+    .replace(/^\- (.*$)/gm, '<li>$1</li>')
+    .replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>')
+    .replace(/\n\n/g, '</p><p>')
+    .replace(/^(.+)$/gm, (match) => {
+      if (match.startsWith('<')) return match;
+      return match;
+    });
 }
 
 // Utilities

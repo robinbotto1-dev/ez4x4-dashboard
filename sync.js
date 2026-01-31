@@ -83,8 +83,45 @@ async function syncData() {
     console.log(`   ⚠️ Error loading intel: ${e.message}`);
   }
   
-  // 3. Git push to GitHub Pages
-  console.log('3️⃣ Pushing to GitHub...');
+  // 3. Sync documents
+  console.log('3️⃣ Syncing documents...');
+  try {
+    const docsDir = path.join(INTEL_DIR, 'docs');
+    const manifestPath = path.join(docsDir, 'manifest.json');
+    
+    if (await fs.access(manifestPath).then(() => true).catch(() => false)) {
+      const manifest = JSON.parse(await fs.readFile(manifestPath, 'utf8'));
+      
+      // Copy manifest to dashboard
+      await fs.writeFile(
+        path.join(DATA_DIR, 'docs.json'),
+        JSON.stringify(manifest, null, 2)
+      );
+      
+      // Copy doc files
+      const docsOutDir = path.join(DATA_DIR, 'docs');
+      await fs.mkdir(docsOutDir, { recursive: true });
+      
+      for (const doc of manifest.documents) {
+        const srcPath = path.join(docsDir, doc.file);
+        const destPath = path.join(docsOutDir, doc.file);
+        try {
+          await fs.copyFile(srcPath, destPath);
+        } catch (e) {
+          console.log(`   ⚠️ Could not copy ${doc.file}`);
+        }
+      }
+      
+      console.log(`   ✅ Synced ${manifest.documents.length} documents`);
+    } else {
+      console.log('   ℹ️ No docs manifest found');
+    }
+  } catch (e) {
+    console.log(`   ⚠️ Error syncing docs: ${e.message}`);
+  }
+  
+  // 4. Git push to GitHub Pages
+  console.log('4️⃣ Pushing to GitHub...');
   try {
     process.chdir(DASHBOARD_DIR);
     

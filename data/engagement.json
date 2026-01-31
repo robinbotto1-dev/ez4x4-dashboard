@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-31T20:19:24.038Z",
+  "generatedAt": "2026-01-31T20:32:45.661Z",
   "date": "2026-01-31",
   "opportunities": [
     {
@@ -206,6 +206,42 @@
         "forum": "Bronco6g",
         "type": "community_engagement",
         "draft": "That looks like an awesome trip! The scenery is incredible.\n\nHow did everything hold up? Any lessons learned for next time?",
+        "productMention": null,
+        "confidence": "medium"
+      }
+    },
+    {
+      "forum": "Bronco6g",
+      "forumSlug": "bronco6g",
+      "title": "Show off your BRONZE wheels!",
+      "url": "https://www.bronco6g.com/forum/threads/show-off-your-bronze-wheels.128068/",
+      "description": "",
+      "author": "OffRoadUSA.com",
+      "pubDate": "2026-01-31T20:23:13.000Z",
+      "products": [
+        "Fliptop",
+        "EZTRUNK",
+        "Hard Top Lift",
+        "Roof Rack"
+      ],
+      "productCategory": "bronco",
+      "analysis": {
+        "isQuestion": false,
+        "isProductRelated": false,
+        "isPainPoint": false,
+        "isCommunity": true,
+        "triggers": [
+          "show off"
+        ],
+        "score": 3,
+        "responseType": "community_engagement"
+      },
+      "suggestedResponse": {
+        "thread": "Show off your BRONZE wheels!",
+        "url": "https://www.bronco6g.com/forum/threads/show-off-your-bronze-wheels.128068/",
+        "forum": "Bronco6g",
+        "type": "community_engagement",
+        "draft": "Looking good! 🔥 Love the setup.\n\nWhat's next on your mod list? And have you taken it on any trails yet?",
         "productMention": null,
         "confidence": "medium"
       }
