@@ -1,6 +1,6 @@
 {
-  "status": "working",
-  "task": "Setting Robin as default page",
-  "updatedAt": "2026-01-31T21:32:35.649Z",
-  "details": "Quick change to make Robin workspace load first."
+  "status": "available",
+  "task": "Robin is now default",
+  "updatedAt": "2026-01-31T21:33:21.485Z",
+  "details": "Dashboard now loads Robin workspace first. Clear localStorage or hard refresh to see the change."
 }
