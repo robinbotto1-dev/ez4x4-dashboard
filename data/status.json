@@ -1,6 +1,6 @@
 {
-  "status": "available",
-  "task": "Ready",
-  "updatedAt": "2026-01-31T22:26:00.682Z",
-  "details": "Heartbeat complete"
+  "status": "working",
+  "task": "Fixing blockers alignment + checkboxes",
+  "updatedAt": "2026-01-31T22:26:09.564Z",
+  "details": "Stripe-style checkboxes, aligning tags"
 }
