@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-01-31T21:10:30.839Z",
+  "generatedAt": "2026-01-31T21:19:54.193Z",
   "date": "2026-01-31",
   "opportunities": [
     {
@@ -333,6 +333,42 @@
       },
       "suggestedResponse": {
         "draft": "[Manual review needed - no template match]",
+        "productMention": null,
+        "confidence": "medium"
+      }
+    },
+    {
+      "forum": "JL Wrangler Forums",
+      "forumSlug": "jlwrangler",
+      "title": "New crusher parts",
+      "url": "https://www.jlwranglerforums.com/forum/threads/new-crusher-parts.163216/",
+      "description": "",
+      "author": "Ratler",
+      "pubDate": "2026-01-31T21:16:40.000Z",
+      "products": [
+        "Fliptop",
+        "Hard Top Lift",
+        "Door Cart",
+        "Tube Doors"
+      ],
+      "productCategory": "jeep",
+      "analysis": {
+        "isQuestion": false,
+        "isProductRelated": false,
+        "isPainPoint": false,
+        "isCommunity": true,
+        "triggers": [
+          "new"
+        ],
+        "score": 3,
+        "responseType": "community_engagement"
+      },
+      "suggestedResponse": {
+        "thread": "New crusher parts",
+        "url": "https://www.jlwranglerforums.com/forum/threads/new-crusher-parts.163216/",
+        "forum": "JL Wrangler Forums",
+        "type": "community_engagement",
+        "draft": "Congrats on the new ride! Welcome to the community.\n\nWhat made you go with this one? And what mods are you planning first?",
         "productMention": null,
         "confidence": "medium"
       }

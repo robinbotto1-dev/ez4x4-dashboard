@@ -1,77 +1,285 @@
 {
-  "updatedAt": "2026-01-31T21:09:00.000Z",
+  "updatedAt": "2026-01-31T21:20:00.000Z",
   "documents": [
     {
       "id": "forum-strategy",
       "title": "Forum Strategy Playbook",
       "category": "strategy",
-      "description": "Best practices from Jay's forum meeting - posting times, giveaway strategy, rules",
       "file": "forum-strategy.md",
       "createdAt": "2026-01-31"
     },
     {
       "id": "company-overview",
-      "title": "EZ4X4 Company Overview",
+      "title": "Company Overview",
       "category": "strategy",
-      "description": "Complete company profile, products, positioning, and brand info",
       "file": "company-overview.md",
       "createdAt": "2026-01-29"
     },
     {
-      "id": "faq-content",
-      "title": "FAQ Content Library",
+      "id": "action-plan-q1",
+      "title": "Q1 2026 Action Plan",
       "category": "strategy",
-      "description": "Pre-written FAQ answers for customer support and website",
-      "file": "faq-content.md",
-      "createdAt": "2026-01-28"
+      "file": "strategy/action-plan-q1-2026.md",
+      "createdAt": "2026-01-29"
+    },
+    {
+      "id": "brand-voice",
+      "title": "Brand Voice Guide",
+      "category": "strategy",
+      "file": "strategy/brand-voice-guide.md",
+      "createdAt": "2026-01-29"
+    },
+    {
+      "id": "customer-personas",
+      "title": "Customer Personas",
+      "category": "strategy",
+      "file": "strategy/customer-personas.md",
+      "createdAt": "2026-01-29"
+    },
+    {
+      "id": "competitive-monitoring",
+      "title": "Competitive Monitoring",
+      "category": "strategy",
+      "file": "strategy/competitive-monitoring.md",
+      "createdAt": "2026-01-29"
+    },
+    {
+      "id": "forum-analysis",
+      "title": "Forum Analysis",
+      "category": "strategy",
+      "file": "strategy/forum-analysis.md",
+      "createdAt": "2026-01-29"
+    },
+    {
+      "id": "quick-wins",
+      "title": "Quick Wins Checklist",
+      "category": "strategy",
+      "file": "strategy/quick-wins-checklist.md",
+      "createdAt": "2026-01-29"
     },
     {
       "id": "domination-plan",
       "title": "Marketing Domination Plan",
-      "category": "strategy",
-      "description": "Full marketing strategy for forum and community domination",
+      "category": "marketing",
       "file": "marketing/domination-plan.md",
       "createdAt": "2026-01-30"
     },
     {
       "id": "candidate-channels",
       "title": "Marketing Channel Candidates",
-      "category": "strategy",
-      "description": "Analysis of potential marketing channels and platforms",
+      "category": "marketing",
       "file": "marketing/candidate-channels.md",
       "createdAt": "2026-01-29"
     },
     {
       "id": "ad-copy-library",
       "title": "Ad Copy Library",
-      "category": "strategy",
-      "description": "Pre-written ad copy for various platforms and products",
+      "category": "marketing",
       "file": "marketing/ad-copy-library.md",
-      "createdAt": "2026-01-28"
+      "createdAt": "2026-01-29"
+    },
+    {
+      "id": "email-templates",
+      "title": "Email Templates",
+      "category": "marketing",
+      "file": "marketing/email-templates.md",
+      "createdAt": "2026-01-29"
+    },
+    {
+      "id": "social-calendar",
+      "title": "Social Content Calendar",
+      "category": "marketing",
+      "file": "marketing/social-content-calendar.md",
+      "createdAt": "2026-01-29"
+    },
+    {
+      "id": "bronco6g-posts",
+      "title": "Bronco6g Post Templates",
+      "category": "marketing",
+      "file": "marketing/bronco6g-post-templates.md",
+      "createdAt": "2026-01-29"
+    },
+    {
+      "id": "dealership-strategy",
+      "title": "Dealership Strategy",
+      "category": "marketing",
+      "file": "marketing/dealership-strategy.md",
+      "createdAt": "2026-01-29"
+    },
+    {
+      "id": "affiliate-program",
+      "title": "Affiliate Program Guide",
+      "category": "marketing",
+      "file": "marketing/affiliate-program-guide.md",
+      "createdAt": "2026-01-29"
+    },
+    {
+      "id": "club-partnerships",
+      "title": "Club Partnership Templates",
+      "category": "marketing",
+      "file": "marketing/club-partnership-templates.md",
+      "createdAt": "2026-01-29"
+    },
+    {
+      "id": "trade-show",
+      "title": "Trade Show Playbook",
+      "category": "marketing",
+      "file": "marketing/trade-show-playbook.md",
+      "createdAt": "2026-01-29"
+    },
+    {
+      "id": "influencer-outreach",
+      "title": "Influencer Outreach Strategy",
+      "category": "influencers",
+      "file": "marketing/influencers/influencer-outreach.md",
+      "createdAt": "2026-01-29"
+    },
+    {
+      "id": "influencer-ready",
+      "title": "Influencer Outreach (Ready to Send)",
+      "category": "influencers",
+      "file": "marketing/influencers/influencer-outreach-ready.md",
+      "createdAt": "2026-01-30"
+    },
+    {
+      "id": "micro-influencers",
+      "title": "Micro Influencer List",
+      "category": "influencers",
+      "file": "marketing/influencers/micro-influencer-list-jan30.md",
+      "createdAt": "2026-01-30"
+    },
+    {
+      "id": "youtube-influencers",
+      "title": "YouTube Influencer List",
+      "category": "influencers",
+      "file": "marketing/influencers/youtube-influencer-list-jan30.md",
+      "createdAt": "2026-01-30"
+    },
+    {
+      "id": "blog-outlines",
+      "title": "Blog Post Outlines",
+      "category": "content",
+      "file": "content/blog-outlines.md",
+      "createdAt": "2026-01-29"
+    },
+    {
+      "id": "blog-freedom-panels",
+      "title": "Blog: Freedom Panels Guide",
+      "category": "content",
+      "file": "content/blog-post-freedom-panels.md",
+      "createdAt": "2026-01-29"
+    },
+    {
+      "id": "blog-truck-bed",
+      "title": "Blog: Truck Bed Organization",
+      "category": "content",
+      "file": "content/blog-post-truck-bed-organization.md",
+      "createdAt": "2026-01-29"
+    },
+    {
+      "id": "video-scripts",
+      "title": "Video Script Templates",
+      "category": "content",
+      "file": "content/video-script-templates.md",
+      "createdAt": "2026-01-29"
+    },
+    {
+      "id": "customer-service",
+      "title": "Customer Service Templates",
+      "category": "content",
+      "file": "content/customer-service-templates.md",
+      "createdAt": "2026-01-29"
+    },
+    {
+      "id": "faq-content",
+      "title": "FAQ Content Library",
+      "category": "content",
+      "file": "faq-content.md",
+      "createdAt": "2026-01-29"
     },
     {
       "id": "all-products",
       "title": "All Product Descriptions",
       "category": "products",
-      "description": "Complete product catalog with descriptions",
       "file": "products/all-products.md",
-      "createdAt": "2026-01-28"
+      "createdAt": "2026-01-29"
     },
     {
-      "id": "top-10-revised",
-      "title": "Top 10 Products (Revised)",
+      "id": "top-10-products",
+      "title": "Top 10 Products (Detailed)",
       "category": "products",
-      "description": "Detailed descriptions for top 10 selling products",
       "file": "products/top-10-revised.md",
       "createdAt": "2026-01-29"
     },
     {
-      "id": "jan-2026-data-review",
+      "id": "product-templates",
+      "title": "Product Description Templates",
+      "category": "products",
+      "file": "products/product-description-templates.md",
+      "createdAt": "2026-01-29"
+    },
+    {
+      "id": "group-buys",
+      "title": "Group Buys Page Copy",
+      "category": "products",
+      "file": "products/group-buys-page.md",
+      "createdAt": "2026-01-29"
+    },
+    {
+      "id": "military-discount",
+      "title": "Military Discount Page",
+      "category": "products",
+      "file": "products/military-discount-page.md",
+      "createdAt": "2026-01-29"
+    },
+    {
+      "id": "share-your-build",
+      "title": "Share Your Build Campaign",
+      "category": "products",
+      "file": "products/share-your-build-campaign.md",
+      "createdAt": "2026-01-29"
+    },
+    {
+      "id": "jan-data-review",
       "title": "January 2026 Data Review",
       "category": "reports",
-      "description": "Monthly data analysis and performance review",
       "file": "analysis/jan-2026-data-review.md",
       "createdAt": "2026-01-30"
+    },
+    {
+      "id": "sales-analysis",
+      "title": "Sales Analysis",
+      "category": "reports",
+      "file": "analysis/sales-analysis.md",
+      "createdAt": "2026-01-29"
+    },
+    {
+      "id": "competitor-analysis",
+      "title": "Competitor Analysis",
+      "category": "reports",
+      "file": "analysis/competitor-analysis.md",
+      "createdAt": "2026-01-29"
+    },
+    {
+      "id": "competitor-ads",
+      "title": "Competitor Ad Analysis (Jan 30)",
+      "category": "reports",
+      "file": "analysis/competitor-ad-analysis-jan30.md",
+      "createdAt": "2026-01-30"
+    },
+    {
+      "id": "shopify-impl",
+      "title": "Shopify Implementation Guide",
+      "category": "technical",
+      "file": "technical/shopify-implementation.md",
+      "createdAt": "2026-01-29"
+    },
+    {
+      "id": "seo-keywords",
+      "title": "SEO Keywords Research",
+      "category": "technical",
+      "file": "technical/seo-keywords.md",
+      "createdAt": "2026-01-29"
     }
   ]
 }

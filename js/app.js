@@ -331,17 +331,20 @@ And for the "both" crowd - when do you swap?`,
 function renderDocs() {
   // Categorize documents
   const categories = {
-    strategy: { icon: '🎯', docs: [] },
-    products: { icon: '📦', docs: [] },
-    reports: { icon: '📈', docs: [] },
-    competitors: { icon: '📊', docs: [] },
-    other: { icon: '📁', docs: [] }
+    strategy: [],
+    marketing: [],
+    influencers: [],
+    content: [],
+    products: [],
+    reports: [],
+    technical: [],
+    other: []
   };
   
   // Sort docs into categories
   for (const doc of docsData) {
     const cat = categories[doc.category] || categories.other;
-    cat.docs.push(doc);
+    cat.push(doc);
   }
   
   // Render each category
@@ -352,14 +355,17 @@ function renderDocs() {
     return docs.map(d => 
       `<li>
         <a href="#" onclick="openDoc('${d.file}'); return false;">${icon} ${d.title}</a>
-        <span class="doc-date">${d.createdAt || ''}</span>
       </li>`
     ).join('');
   };
   
-  document.getElementById('strategyList').innerHTML = renderList(categories.strategy.docs, '🎯');
-  document.getElementById('productsList').innerHTML = renderList(categories.products.docs, '📦');
-  document.getElementById('reportsList').innerHTML = renderList(categories.reports.docs, '📈');
+  document.getElementById('strategyList').innerHTML = renderList(categories.strategy, '📄');
+  document.getElementById('marketingList').innerHTML = renderList(categories.marketing, '📄');
+  document.getElementById('influencersList').innerHTML = renderList(categories.influencers, '📄');
+  document.getElementById('contentList').innerHTML = renderList(categories.content, '📄');
+  document.getElementById('productsList').innerHTML = renderList(categories.products, '📄');
+  document.getElementById('reportsList').innerHTML = renderList(categories.reports, '📄');
+  document.getElementById('technicalList').innerHTML = renderList(categories.technical, '📄');
 }
 
 // Actions
