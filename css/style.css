@@ -1535,21 +1535,31 @@ body.locked .status-widget {
 }
 
 .q-btn {
-  width: 32px;
-  height: 32px;
-  border: none;
-  background: var(--success);
-  color: white;
+  width: 28px;
+  height: 28px;
+  border: 1.5px solid var(--border);
+  background: transparent;
+  color: var(--text-muted);
   border-radius: 6px;
   cursor: pointer;
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 13px;
+  font-weight: 500;
   transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .q-btn:hover {
-  background: #28b84d;
-  transform: scale(1.05);
+  border-color: var(--success);
+  background: #f0fdf4;
+  color: var(--success);
+}
+
+.q-btn:active {
+  background: var(--success);
+  color: white;
+  border-color: var(--success);
 }
 
 /* Robin's queue - 4 columns */
@@ -1719,22 +1729,32 @@ body.locked .status-widget {
 }
 
 .blocker-clear {
-  width: 32px;
-  height: 32px;
-  border: none;
-  background: var(--success);
-  color: white;
+  width: 28px;
+  height: 28px;
+  border: 1.5px solid var(--border);
+  background: transparent;
+  color: var(--text-muted);
   border-radius: 6px;
   cursor: pointer;
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 13px;
+  font-weight: 500;
   transition: all 0.15s;
   justify-self: end;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .blocker-clear:hover {
-  background: #28b84d;
-  transform: scale(1.05);
+  border-color: var(--success);
+  background: #f0fdf4;
+  color: var(--success);
+}
+
+.blocker-clear:active {
+  background: var(--success);
+  color: white;
+  border-color: var(--success);
 }
 
 /* Completed History Section */
