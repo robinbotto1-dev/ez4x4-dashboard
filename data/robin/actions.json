@@ -5,7 +5,7 @@
       "id": "g1",
       "title": "Publish Military Discount Page",
       "source": "PROJECT-TRACKER.md",
-      "link": "https://github.com/robinbotto1-dev/ez4x4-dashboard/blob/main/data/docs/military-discount-page.md",
+      "link": "https://github.com/robinbotto1-dev/ez4x4-dashboard/blob/main/data/docs/products/military-discount-page.md",
       "impact": "Drives conversions",
       "effort": "15 min",
       "completed": false
@@ -14,7 +14,7 @@
       "id": "g2",
       "title": "Review Group Buys Program draft",
       "source": "PROJECT-TRACKER.md",
-      "link": "https://github.com/robinbotto1-dev/ez4x4-dashboard/blob/main/data/docs/group-buys-program.md",
+      "link": "https://github.com/robinbotto1-dev/ez4x4-dashboard/blob/main/data/docs/products/group-buys-page.md",
       "impact": "New revenue channel",
       "effort": "20 min",
       "completed": false
