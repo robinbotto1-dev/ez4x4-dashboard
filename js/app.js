@@ -581,30 +581,96 @@ function switchWorkspace(workspaceId, event) {
   // Close dropdown
   document.querySelector('.workspace-selector').classList.remove('open');
   
-  // Show coming soon for non-EZ4X4 workspaces (for now)
-  if (workspaceId !== 'ez4x4') {
-    showWorkspaceComingSoon(workspace);
-  } else {
+  // Load workspace content
+  if (workspaceId === 'ez4x4') {
     hideWorkspaceComingSoon();
-    loadData();
-    renderAll();
+  } else {
+    showWorkspaceContent(workspace, workspaceId);
   }
 }
 
-function showWorkspaceComingSoon(workspace) {
+async function showWorkspaceContent(workspace, workspaceId) {
   const content = document.querySelector('.content');
-  content.innerHTML = `
-    <div class="coming-soon">
-      <span class="coming-soon-icon">${workspace.icon}</span>
-      <h2>${workspace.name} Dashboard</h2>
-      <p>Coming soon! This workspace is being set up.</p>
-      <p class="coming-soon-hint">Robin will build this out based on your needs.</p>
-    </div>
-  `;
+  
+  if (workspaceId === 'founderchat') {
+    // Load Founder Chat docs
+    let fcDocs = [];
+    try {
+      const res = await fetch('data/founderchat/docs.json?t=' + Date.now());
+      if (res.ok) {
+        const data = await res.json();
+        fcDocs = data.documents || [];
+      }
+    } catch (e) {
+      console.log('Could not load FC docs');
+    }
+    
+    // Categorize
+    const cats = { strategy: [], accelerators: [], content: [] };
+    for (const doc of fcDocs) {
+      if (cats[doc.category]) cats[doc.category].push(doc);
+    }
+    
+    const renderList = (docs) => docs.length === 0 
+      ? '<li class="empty">No documents yet</li>'
+      : docs.map(d => `<li><a href="#" onclick="openFCDoc('${d.file}'); return false;">📄 ${d.title}</a></li>`).join('');
+    
+    content.innerHTML = `
+      <section class="section active">
+        <header class="section-header">
+          <h2>💬 Founder Chat Documents</h2>
+          <p>${fcDocs.length} documents available</p>
+        </header>
+        <div class="docs-grid">
+          <div class="doc-category">
+            <h3>🎯 Strategy</h3>
+            <ul>${renderList(cats.strategy)}</ul>
+          </div>
+          <div class="doc-category">
+            <h3>🚀 Accelerator Guides</h3>
+            <ul>${renderList(cats.accelerators)}</ul>
+          </div>
+          <div class="doc-category">
+            <h3>📝 Content</h3>
+            <ul>${renderList(cats.content)}</ul>
+          </div>
+        </div>
+      </section>
+    `;
+  } else if (workspaceId === 'robin') {
+    content.innerHTML = `
+      <div class="coming-soon">
+        <span class="coming-soon-icon">${workspace.icon}</span>
+        <h2>${workspace.name} Dashboard</h2>
+        <p>Coming soon! This workspace is being set up.</p>
+        <p class="coming-soon-hint">Will include tasks, notes, calendar, and integrations.</p>
+      </div>
+    `;
+  }
+}
+
+async function openFCDoc(filename) {
+  try {
+    const res = await fetch(`data/founderchat/docs/${filename}`);
+    if (res.ok) {
+      const text = await res.text();
+      const modal = document.createElement('div');
+      modal.className = 'doc-modal';
+      modal.innerHTML = `
+        <div class="doc-modal-content">
+          <button class="doc-modal-close" onclick="this.parentElement.parentElement.remove()">✕</button>
+          <div class="doc-modal-body">${simpleMarkdown(text)}</div>
+        </div>
+      `;
+      document.body.appendChild(modal);
+      modal.addEventListener('click', (e) => { if (e.target === modal) modal.remove(); });
+    }
+  } catch (e) {
+    console.error('Error loading doc:', e);
+  }
 }
 
 function hideWorkspaceComingSoon() {
-  // Reload the page to restore original content
   location.reload();
 }
 

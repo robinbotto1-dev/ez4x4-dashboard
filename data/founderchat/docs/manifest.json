@@ -1,0 +1,85 @@
+{
+  "updatedAt": "2026-01-31T21:16:00.000Z",
+  "documents": [
+    {
+      "id": "competitor-analysis",
+      "title": "Competitor Analysis",
+      "category": "strategy",
+      "description": "Analysis of competing founder communities and services",
+      "file": "strategy/competitor-analysis.md",
+      "createdAt": "2026-01-28"
+    },
+    {
+      "id": "growth-strategy",
+      "title": "Growth Strategy",
+      "category": "strategy",
+      "description": "User acquisition and growth plan for Founder Chat",
+      "file": "strategy/growth-strategy.md",
+      "createdAt": "2026-01-28"
+    },
+    {
+      "id": "twitter-strategy",
+      "title": "Twitter Strategy",
+      "category": "strategy",
+      "description": "Social media strategy for Twitter/X presence",
+      "file": "strategy/twitter-strategy.md",
+      "createdAt": "2026-01-29"
+    },
+    {
+      "id": "landing-page-copy",
+      "title": "Landing Page Copy",
+      "category": "strategy",
+      "description": "Website copy and messaging for landing page",
+      "file": "strategy/landing-page-copy.md",
+      "createdAt": "2026-01-28"
+    },
+    {
+      "id": "sample-deadlines",
+      "title": "Sample Deadlines Thread",
+      "category": "content",
+      "description": "Example Discord thread format for deadline alerts",
+      "file": "content/sample-deadlines-thread.md",
+      "createdAt": "2026-01-29"
+    },
+    {
+      "id": "yc-guide",
+      "title": "Y Combinator Guide",
+      "category": "accelerators",
+      "description": "Complete guide to Y Combinator application and program",
+      "file": "accelerators/ycombinator.md",
+      "createdAt": "2026-01-28"
+    },
+    {
+      "id": "sequoia-guide",
+      "title": "Sequoia Guide",
+      "category": "accelerators",
+      "description": "Guide to Sequoia's programs and application process",
+      "file": "accelerators/sequoia.md",
+      "createdAt": "2026-01-28"
+    },
+    {
+      "id": "spc-guide",
+      "title": "South Park Commons Guide",
+      "category": "accelerators",
+      "description": "Guide to South Park Commons fellowship",
+      "file": "accelerators/south-park-commons.md",
+      "createdAt": "2026-01-28"
+    },
+    {
+      "id": "a16z-guide",
+      "title": "A16Z Guide",
+      "category": "accelerators",
+      "description": "Guide to Andreessen Horowitz programs",
+      "file": "accelerators/a16z.md",
+      "createdAt": "2026-01-28"
+    },
+    {
+      "id": "founders-inc-guide",
+      "title": "Founders Inc Guide",
+      "category": "accelerators",
+      "description": "Guide to Founders Inc program",
+      "file": "accelerators/founders-inc.md",
+      "createdAt": "2026-01-28"
+    }
+  ]
+}
