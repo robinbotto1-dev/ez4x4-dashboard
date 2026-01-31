@@ -923,21 +923,33 @@ async function showRobinHistory() {
     return d.toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
   };
   
+  // Convert 24h to 12h time
+  const to12Hour = (time24) => {
+    if (!time24) return '';
+    const [h, m] = time24.split(':');
+    const hour = parseInt(h, 10);
+    const ampm = hour >= 12 ? 'pm' : 'am';
+    const hour12 = hour % 12 || 12;
+    return `${hour12}:${m} ${ampm}`;
+  };
+  
   // Build timeline HTML
   const timelineDates = Object.keys(timeline).sort().reverse();
   const timelineHtml = timelineDates.map(date => {
     const items = timeline[date] || [];
-    const dateLabel = new Date(date).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+    const dateLabel = new Date(date).toLocaleDateString('en-US', { weekday: 'long', month: 'short', day: 'numeric' });
     return `
       <div class="history-day">
         <div class="history-day-header">${dateLabel}</div>
-        ${items.map(item => `
-          <div class="history-day-item">
-            <span class="history-day-time">${item.time}</span>
-            <span class="history-day-task">✓ ${item.task}</span>
-            <span class="history-day-dur">${item.duration}</span>
-          </div>
-        `).join('')}
+        <div class="history-day-items">
+          ${items.map(item => `
+            <div class="history-day-item">
+              <span class="history-day-time">${to12Hour(item.time)}</span>
+              <span class="history-day-task">✓ ${item.task}</span>
+              <span class="history-day-dur">${item.duration}</span>
+            </div>
+          `).join('')}
+        </div>
       </div>
     `;
   }).join('');

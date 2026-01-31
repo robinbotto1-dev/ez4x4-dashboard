@@ -1820,79 +1820,76 @@ body.locked .status-widget {
 .history-timeline {
   display: flex;
   flex-direction: column;
-  gap: 0;
-  position: relative;
-  padding-left: 24px;
-}
-
-.history-timeline::before {
-  content: '';
-  position: absolute;
-  left: 7px;
-  top: 20px;
-  bottom: 20px;
-  width: 2px;
-  background: var(--border);
+  gap: 20px;
 }
 
 .history-day {
   background: var(--bg-white);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 16px;
-  margin-bottom: 16px;
-  position: relative;
-}
-
-.history-day::before {
-  content: '';
-  position: absolute;
-  left: -21px;
-  top: 18px;
-  width: 12px;
-  height: 12px;
-  background: var(--accent);
-  border-radius: 50%;
-  border: 2px solid var(--bg-white);
-  box-shadow: 0 0 0 2px var(--accent);
+  border-radius: var(--radius-lg);
+  padding: 16px 16px 16px 20px;
 }
 
 .history-day-header {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
-  color: var(--accent);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 12px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid var(--border-light);
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.history-day-items {
+  position: relative;
+  padding-left: 20px;
+}
+
+.history-day-items::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background: var(--border);
+  border-radius: 1px;
 }
 
 .history-day-item {
-  display: grid;
-  grid-template-columns: 60px 1fr 80px;
-  padding: 8px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 6px 0;
   font-size: 13px;
-  border-bottom: 1px solid var(--border-light);
+  position: relative;
 }
 
-.history-day-item:last-child {
-  border-bottom: none;
+.history-day-item::before {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 10px;
+  width: 10px;
+  height: 10px;
+  background: var(--accent);
+  border-radius: 50%;
+  border: 2px solid var(--bg-white);
 }
 
 .history-day-time {
   color: var(--text-muted);
   font-size: 12px;
+  min-width: 70px;
+  flex-shrink: 0;
 }
 
 .history-day-task {
   color: var(--text-primary);
+  flex: 1;
 }
 
 .history-day-dur {
   color: var(--text-muted);
   font-size: 12px;
-  text-align: right;
+  flex-shrink: 0;
 }
 
 /* View history link */
