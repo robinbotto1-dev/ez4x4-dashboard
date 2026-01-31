@@ -841,11 +841,18 @@ async function showWorkspaceContent(workspace, workspaceId) {
         
         <!-- BLOCKERS -->
         ${blockers.length > 0 ? `
-        <div class="blockers-section">
+        <div class="queue-section">
           <h3>🚧 Blockers</h3>
-          <div class="blockers-list">
+          <div class="queue-table">
+            <div class="queue-header" style="grid-template-columns: 50px 1fr 100px 50px;">
+              <span>ID</span>
+              <span>Blocker</span>
+              <span>Status</span>
+              <span></span>
+            </div>
             ${blockers.map(b => `
               <div class="blocker-row" data-id="${b.id}">
+                <span class="blocker-id">${b.id}</span>
                 <span class="blocker-title">${b.title}</span>
                 <span class="blocker-status">${b.status}</span>
                 <button class="blocker-clear" onclick="completeItem('${b.id}', 'blocker')">✓</button>
