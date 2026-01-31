@@ -496,9 +496,11 @@ function updateStatusWidget(data) {
   const badgeLabels = {
     available: 'Available',
     working: 'Working',
-    offline: 'Offline'
+    offline: 'Offline',
+    online: 'Available',
+    idle: 'Available'
   };
-  badgeEl.textContent = badgeLabels[status] || 'Unknown';
+  badgeEl.textContent = badgeLabels[status] || status || 'Unknown';
   
   taskEl.textContent = data.task || 'Idle';
   

@@ -637,7 +637,9 @@ body {
   color: var(--text-muted);
 }
 
-.status-widget.available .status-badge {
+.status-widget.available .status-badge,
+.status-widget.online .status-badge,
+.status-widget.idle .status-badge {
   background: #dbeafe;
   color: #2563eb;
 }
