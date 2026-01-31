@@ -1,6 +1,6 @@
 {
-  "status": "working",
-  "task": "Adding links to tasks",
-  "updatedAt": "2026-01-31T22:34:48.173Z",
-  "details": "Making tasks hyperlink to source docs"
+  "status": "available",
+  "task": "Ready",
+  "updatedAt": "2026-01-31T22:35:30.351Z",
+  "details": "Tasks now hyperlink to docs"
 }
