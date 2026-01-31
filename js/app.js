@@ -809,7 +809,7 @@ async function showWorkspaceContent(workspace, workspaceId) {
             ${gabrielQueue.filter(a => !a.completed).map(a => `
               <div class="queue-row" data-id="${a.id}">
                 <span class="q-id">${a.id}</span>
-                <span class="q-task">${a.title}</span>
+                <span class="q-task">${a.link ? `<a href="${a.link}" target="_blank">${a.title}</a>` : a.title}</span>
                 <span class="q-impact">${a.impact.replace('Quick win - ', '').replace('Unblocks ', '→ ')}</span>
                 <span class="q-time">${a.effort}</span>
                 <button class="q-btn" onclick="completeItem('${a.id}')">✓</button>

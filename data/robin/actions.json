@@ -1,11 +1,12 @@
 {
-  "updatedAt": "2026-01-31T22:10:00.000Z",
+  "updatedAt": "2026-01-31T22:34:00.000Z",
   "gabrielQueue": [
     {
       "id": "g1",
       "title": "Publish Military Discount Page",
       "source": "PROJECT-TRACKER.md",
-      "impact": "Quick win - drives conversions",
+      "link": "https://github.com/robinbotto1-dev/ez4x4-dashboard/blob/main/data/docs/military-discount-page.md",
+      "impact": "Drives conversions",
       "effort": "15 min",
       "completed": false
     },
@@ -13,6 +14,7 @@
       "id": "g2",
       "title": "Review Group Buys Program draft",
       "source": "PROJECT-TRACKER.md",
+      "link": "https://github.com/robinbotto1-dev/ez4x4-dashboard/blob/main/data/docs/group-buys-program.md",
       "impact": "New revenue channel",
       "effort": "20 min",
       "completed": false
@@ -21,6 +23,7 @@
       "id": "g3",
       "title": "Review Founder Chat landing page copy",
       "source": "PROJECT-TRACKER.md",
+      "link": null,
       "impact": "Unblocks launch",
       "effort": "10 min",
       "completed": false
@@ -29,23 +32,26 @@
       "id": "g4",
       "title": "Decide: Forum accounts - fresh or existing?",
       "source": "MARKETING-PLAN.md",
-      "impact": "Unblocks forum infiltration",
+      "link": "https://github.com/robinbotto1-dev/ez4x4-dashboard/blob/main/data/docs/forum-strategy.md",
+      "impact": "Unblocks forum work",
       "effort": "5 min",
       "completed": false
     },
     {
       "id": "g5",
-      "title": "Decide: Content auto-publish or queue for review?",
+      "title": "Decide: Content auto-publish or queue?",
       "source": "MARKETING-PLAN.md",
-      "impact": "Unblocks content velocity",
+      "link": null,
+      "impact": "Unblocks content",
       "effort": "5 min",
       "completed": false
     },
     {
       "id": "g6",
-      "title": "Connect Chrome relay for Phase 2 tactics",
+      "title": "Connect Chrome relay for browser automation",
       "source": "MARKETING-PLAN.md",
-      "impact": "Unlocks browser automation",
+      "link": "https://docs.clawd.bot/features/browser",
+      "impact": "Unlocks Phase 2",
       "effort": "2 min",
       "completed": false
     },
@@ -53,7 +59,8 @@
       "id": "g7",
       "title": "Get Shopify API token from Brian",
       "source": "DASHBOARD",
-      "impact": "Unlocks real revenue data",
+      "link": "https://ez4x4.myshopify.com/admin/settings/apps/development",
+      "impact": "Unlocks revenue data",
       "effort": "2 min",
       "completed": false,
       "due": "Monday"

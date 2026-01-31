@@ -1947,3 +1947,15 @@ body.locked .status-widget {
 .view-history-link a:hover {
   text-decoration: underline;
 }
+
+/* Task links */
+.q-task a {
+  color: var(--text-primary);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--border);
+}
+
+.q-task a:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
