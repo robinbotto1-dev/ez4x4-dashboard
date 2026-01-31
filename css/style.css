@@ -403,6 +403,86 @@ body {
   opacity: 1;
 }
 
+/* Auth Gate */
+body.locked .sidebar,
+body.locked .content {
+  display: none !important;
+}
+
+.auth-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--bg-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.auth-box {
+  background: var(--bg-card);
+  padding: 40px;
+  border-radius: 16px;
+  text-align: center;
+  border: 1px solid var(--border);
+  max-width: 320px;
+  width: 90%;
+}
+
+.auth-box h2 {
+  margin-bottom: 8px;
+}
+
+.auth-box p {
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+.auth-box input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-dark);
+  color: var(--text);
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+.auth-box input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.auth-box input.error {
+  border-color: var(--accent);
+  animation: shake 0.3s;
+}
+
+.auth-box button {
+  width: 100%;
+  padding: 12px;
+  background: var(--accent);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.auth-box button:hover {
+  background: var(--accent-light);
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
 /* Document Modal */
 .doc-modal {
   position: fixed;

@@ -9,11 +9,60 @@ let completedItems = JSON.parse(localStorage.getItem('ez4x4_completed') || '{}')
 
 // Initialize
 document.addEventListener('DOMContentLoaded', async () => {
+  if (!checkAuth()) return;
   setupNavigation();
   await loadData();
   renderAll();
   updateProgress();
 });
+
+// Simple auth gate
+function checkAuth() {
+  const stored = localStorage.getItem('ez4x4_auth');
+  if (stored === 'granted') {
+    document.body.classList.add('authenticated');
+    return true;
+  }
+  showAuthPrompt();
+  return false;
+}
+
+function showAuthPrompt() {
+  const overlay = document.createElement('div');
+  overlay.className = 'auth-overlay';
+  overlay.innerHTML = `
+    <div class="auth-box">
+      <h2>🔒 EZ4X4 Command Center</h2>
+      <p>Enter password to continue</p>
+      <input type="password" id="authPassword" placeholder="Password" autofocus>
+      <button onclick="submitAuth()">Enter</button>
+    </div>
+  `;
+  document.body.appendChild(overlay);
+  document.body.classList.add('locked');
+  
+  document.getElementById('authPassword').addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') submitAuth();
+  });
+}
+
+function submitAuth() {
+  const input = document.getElementById('authPassword');
+  const pw = input.value;
+  
+  // Hash check (obfuscated slightly)
+  if (btoa(pw) === 'MTIzMzIx') {
+    localStorage.setItem('ez4x4_auth', 'granted');
+    document.querySelector('.auth-overlay').remove();
+    document.body.classList.remove('locked');
+    document.body.classList.add('authenticated');
+    location.reload();
+  } else {
+    input.value = '';
+    input.placeholder = 'Wrong password';
+    input.classList.add('error');
+  }
+}
 
 // Navigation
 function setupNavigation() {
