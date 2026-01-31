@@ -459,12 +459,30 @@ function updateStatusWidget(data) {
   const widget = document.getElementById('statusWidget');
   if (!widget) return;
   
+  // Preserve expanded state
+  const isExpanded = widget.classList.contains('expanded');
   widget.className = 'status-widget ' + (data.status || 'offline');
+  if (isExpanded) widget.classList.add('expanded');
   
   const taskEl = widget.querySelector('.status-task');
   const timeEl = widget.querySelector('.status-time');
+  const detailsEl = widget.querySelector('.status-details-text');
   
   taskEl.textContent = data.task || 'Idle';
+  
+  // Set details
+  if (data.details) {
+    detailsEl.textContent = data.details;
+  } else {
+    // Default details based on status
+    const defaults = {
+      working: 'Currently focused on this task. Will update when complete.',
+      online: 'Available and monitoring. Ready to help when needed.',
+      idle: 'Waiting for new tasks or messages. Check back soon!',
+      offline: 'Currently offline. Will resume when back online.'
+    };
+    detailsEl.textContent = defaults[data.status] || 'No additional details.';
+  }
   
   if (data.updatedAt) {
     const updated = new Date(data.updatedAt);
@@ -481,6 +499,11 @@ function updateStatusWidget(data) {
       timeEl.textContent = updated.toLocaleDateString();
     }
   }
+}
+
+function toggleStatusExpand() {
+  const widget = document.getElementById('statusWidget');
+  widget.classList.toggle('expanded');
 }
 
 // Poll status every 30 seconds

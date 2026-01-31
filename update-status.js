@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 /**
  * Quick status updater for Robin's dashboard
- * Usage: node update-status.js "Working on X" [online|working|offline]
+ * Usage: node update-status.js "Task" [status] ["Details"]
+ * Status: online | working | idle | offline
  */
 
 const fs = require('fs');
@@ -12,12 +13,13 @@ const statusFile = path.join(__dirname, 'data/status.json');
 
 const task = process.argv[2] || 'Idle';
 const status = process.argv[3] || 'online';
+const details = process.argv[4] || null;
 
 const data = {
   status,
   task,
   updatedAt: new Date().toISOString(),
-  details: null
+  details
 };
 
 fs.writeFileSync(statusFile, JSON.stringify(data, null, 2));
