@@ -727,12 +727,16 @@ async function showWorkspaceContent(workspace, workspaceId) {
       const res = await fetch('data/robin/actions.json?t=' + Date.now());
       if (res.ok) {
         const serverData = await res.json();
-        // Merge with localStorage completed history
+        // Merge with localStorage completed history and filter out completed items
         const cached = localStorage.getItem('actions_data');
         if (cached) {
           try {
             const localData = JSON.parse(cached);
             serverData.completedHistory = localData.completedHistory || [];
+            // Filter out items that are in completedHistory
+            const completedIds = serverData.completedHistory.map(h => h.id);
+            serverData.gabrielQueue = (serverData.gabrielQueue || []).filter(t => !completedIds.includes(t.id));
+            serverData.blockers = (serverData.blockers || []).filter(b => !completedIds.includes(b.id));
           } catch (e) {}
         }
         actions = serverData;
