@@ -1,0 +1,504 @@
+{
+  "generatedAt": "2026-01-31T20:19:24.038Z",
+  "date": "2026-01-31",
+  "opportunities": [
+    {
+      "forum": "Bronco6g",
+      "forumSlug": "bronco6g",
+      "title": "Bedliner spray on the hard top roof + fender flares? Yes please!",
+      "url": "https://www.bronco6g.com/forum/threads/bedliner-spray-on-the-hard-top-roof-fender-flares-yes-please.124734/",
+      "description": "",
+      "author": "carrellslake",
+      "pubDate": "2026-01-31T18:56:20.000Z",
+      "products": [
+        "Fliptop",
+        "EZTRUNK",
+        "Hard Top Lift",
+        "Roof Rack"
+      ],
+      "productCategory": "bronco",
+      "analysis": {
+        "isQuestion": false,
+        "isProductRelated": true,
+        "isPainPoint": true,
+        "isCommunity": false,
+        "triggers": [
+          "hard top",
+          "roof",
+          "hard to"
+        ],
+        "score": 10,
+        "responseType": "question_product_fit"
+      },
+      "suggestedResponse": {
+        "thread": "Bedliner spray on the hard top roof + fender flares? Yes please!",
+        "url": "https://www.bronco6g.com/forum/threads/bedliner-spray-on-the-hard-top-roof-fender-flares-yes-please.124734/",
+        "forum": "Bronco6g",
+        "type": "question_product_fit",
+        "draft": "Have you looked into the Fliptop system? It converts your freedom panels into hinges so you can flip them up for open air without removing them completely. Makes it super easy to go topless on nice days without dealing with storage.\n\nWhat panels do you have - the front freedoms or the full roof?",
+        "productMention": "Fliptop",
+        "confidence": "high"
+      }
+    },
+    {
+      "forum": "Bronco6g",
+      "forumSlug": "bronco6g",
+      "title": "Yes, That’s a Grandma Removing a 2-Door Bronco Hard Top (using EZ4x4 lift)",
+      "url": "https://www.bronco6g.com/forum/threads/yes-that%E2%80%99s-a-grandma-removing-a-2-door-bronco-hard-top-using-ez4x4-lift.126001/",
+      "description": "",
+      "author": "EZ4x4",
+      "pubDate": "2026-01-31T18:02:56.000Z",
+      "products": [
+        "Fliptop",
+        "EZTRUNK",
+        "Hard Top Lift",
+        "Roof Rack"
+      ],
+      "productCategory": "bronco",
+      "analysis": {
+        "isQuestion": false,
+        "isProductRelated": true,
+        "isPainPoint": true,
+        "isCommunity": false,
+        "triggers": [
+          "hard top",
+          "lift",
+          "hard to"
+        ],
+        "score": 10,
+        "responseType": "question_product_fit"
+      },
+      "suggestedResponse": {
+        "thread": "Yes, That’s a Grandma Removing a 2-Door Bronco Hard Top (using EZ4x4 lift)",
+        "url": "https://www.bronco6g.com/forum/threads/yes-that%E2%80%99s-a-grandma-removing-a-2-door-bronco-hard-top-using-ez4x4-lift.126001/",
+        "forum": "Bronco6g",
+        "type": "question_product_fit",
+        "draft": "Have you looked into the Fliptop system? It converts your freedom panels into hinges so you can flip them up for open air without removing them completely. Makes it super easy to go topless on nice days without dealing with storage.\n\nWhat panels do you have - the front freedoms or the full roof?",
+        "productMention": "Fliptop",
+        "confidence": "high"
+      }
+    },
+    {
+      "forum": "JL Wrangler Forums",
+      "forumSlug": "jlwrangler",
+      "title": "JL Hard Top 2024 2-Door w/ Freedom Panels, Hardware, Bag",
+      "url": "https://www.jlwranglerforums.com/forum/threads/jl-hard-top-2024-2-door-w-freedom-panels-hardware-bag.163209/",
+      "description": "",
+      "author": "startld",
+      "pubDate": "2026-01-31T18:51:58.000Z",
+      "products": [
+        "Fliptop",
+        "Hard Top Lift",
+        "Door Cart",
+        "Tube Doors"
+      ],
+      "productCategory": "jeep",
+      "analysis": {
+        "isQuestion": false,
+        "isProductRelated": true,
+        "isPainPoint": true,
+        "isCommunity": false,
+        "triggers": [
+          "freedom panel",
+          "hard top",
+          "hard to"
+        ],
+        "score": 10,
+        "responseType": "question_product_fit"
+      },
+      "suggestedResponse": {
+        "thread": "JL Hard Top 2024 2-Door w/ Freedom Panels, Hardware, Bag",
+        "url": "https://www.jlwranglerforums.com/forum/threads/jl-hard-top-2024-2-door-w-freedom-panels-hardware-bag.163209/",
+        "forum": "JL Wrangler Forums",
+        "type": "question_product_fit",
+        "draft": "Have you looked into the Fliptop system? It converts your freedom panels into hinges so you can flip them up for open air without removing them completely. Makes it super easy to go topless on nice days without dealing with storage.\n\nWhat panels do you have - the front freedoms or the full roof?",
+        "productMention": "Fliptop",
+        "confidence": "high"
+      }
+    },
+    {
+      "forum": "Bronco6g",
+      "forumSlug": "bronco6g",
+      "title": "2025 B&amp;O front speaker upgrades worth it? And can it they be replaced without issue, 1 for 1?",
+      "url": "https://www.bronco6g.com/forum/threads/2025-b-o-front-speaker-upgrades-worth-it-and-can-it-they-be-replaced-without-issue-1-for-1.127957/",
+      "description": "",
+      "author": "EOD98",
+      "pubDate": "2026-01-31T20:02:48.000Z",
+      "products": [
+        "Fliptop",
+        "EZTRUNK",
+        "Hard Top Lift",
+        "Roof Rack"
+      ],
+      "productCategory": "bronco",
+      "analysis": {
+        "isQuestion": false,
+        "isProductRelated": true,
+        "isPainPoint": true,
+        "isCommunity": false,
+        "triggers": [
+          "upgrade",
+          "issue"
+        ],
+        "score": 8,
+        "responseType": "question_product_fit"
+      },
+      "suggestedResponse": {
+        "thread": "2025 B&amp;O front speaker upgrades worth it? And can it they be replaced without issue, 1 for 1?",
+        "url": "https://www.bronco6g.com/forum/threads/2025-b-o-front-speaker-upgrades-worth-it-and-can-it-they-be-replaced-without-issue-1-for-1.127957/",
+        "forum": "Bronco6g",
+        "type": "question_product_fit",
+        "draft": "[Need manual review - thread doesn't match templates well]",
+        "productMention": null,
+        "confidence": "low"
+      }
+    },
+    {
+      "title": "JT Bed Cargo Divider $139.99",
+      "url": "https://www.jeepgladiatorforum.com/forum/threads/jt-bed-cargo-divider-139-99.103926/",
+      "forum": "Jeep Gladiator Forum",
+      "analysis": {
+        "isQuestion": false,
+        "isProductRelated": true,
+        "triggers": [
+          "bed",
+          "cargo"
+        ],
+        "score": 6,
+        "responseType": null
+      },
+      "suggestedResponse": {
+        "draft": "Truck Buddiez might be worth checking out - they use the tailgate locking mechanism to create movable tie-down points. No drilling, and you can reposition them as needed.\n\nWhat kind of gear are you usually hauling?",
+        "productMention": "Truck Buddiez",
+        "confidence": "high"
+      }
+    },
+    {
+      "forum": "Bronco6g",
+      "forumSlug": "bronco6g",
+      "title": "Forscan changes to activate 25+ trailer module?",
+      "url": "https://www.bronco6g.com/forum/threads/forscan-changes-to-activate-25-trailer-module.122794/",
+      "description": "",
+      "author": "EGSquatched",
+      "pubDate": "2026-01-31T17:00:21.000Z",
+      "products": [
+        "Fliptop",
+        "EZTRUNK",
+        "Hard Top Lift",
+        "Roof Rack"
+      ],
+      "productCategory": "bronco",
+      "analysis": {
+        "isQuestion": false,
+        "isProductRelated": true,
+        "isPainPoint": false,
+        "isCommunity": true,
+        "triggers": [
+          "mod",
+          "trail"
+        ],
+        "score": 5,
+        "responseType": "community_engagement"
+      },
+      "suggestedResponse": {
+        "thread": "Forscan changes to activate 25+ trailer module?",
+        "url": "https://www.bronco6g.com/forum/threads/forscan-changes-to-activate-25-trailer-module.122794/",
+        "forum": "Bronco6g",
+        "type": "community_engagement",
+        "draft": "That looks like an awesome trip! The scenery is incredible.\n\nHow did everything hold up? Any lessons learned for next time?",
+        "productMention": null,
+        "confidence": "medium"
+      }
+    },
+    {
+      "forum": "Bronco6g",
+      "forumSlug": "bronco6g",
+      "title": "New to forum - not so new to Broncos",
+      "url": "https://www.bronco6g.com/forum/threads/new-to-forum-not-so-new-to-broncos.128133/",
+      "description": "",
+      "author": "mk7tristan",
+      "pubDate": "2026-01-31T19:51:54.000Z",
+      "products": [
+        "Fliptop",
+        "EZTRUNK",
+        "Hard Top Lift",
+        "Roof Rack"
+      ],
+      "productCategory": "bronco",
+      "analysis": {
+        "isQuestion": false,
+        "isProductRelated": false,
+        "isPainPoint": false,
+        "isCommunity": true,
+        "triggers": [
+          "new"
+        ],
+        "score": 3,
+        "responseType": "community_engagement"
+      },
+      "suggestedResponse": {
+        "thread": "New to forum - not so new to Broncos",
+        "url": "https://www.bronco6g.com/forum/threads/new-to-forum-not-so-new-to-broncos.128133/",
+        "forum": "Bronco6g",
+        "type": "community_engagement",
+        "draft": "Congrats on the new ride! Welcome to the community.\n\nWhat made you go with this one? And what mods are you planning first?",
+        "productMention": null,
+        "confidence": "medium"
+      }
+    },
+    {
+      "forum": "Bronco6g",
+      "forumSlug": "bronco6g",
+      "title": "Replacing my 11 year old Chevy pick up with a new Ranger Raptor",
+      "url": "https://www.bronco6g.com/forum/threads/replacing-my-11-year-old-chevy-pick-up-with-a-new-ranger-raptor.128198/",
+      "description": "",
+      "author": "dpAtlanta",
+      "pubDate": "2026-01-31T18:45:19.000Z",
+      "products": [
+        "Fliptop",
+        "EZTRUNK",
+        "Hard Top Lift",
+        "Roof Rack"
+      ],
+      "productCategory": "bronco",
+      "analysis": {
+        "isQuestion": false,
+        "isProductRelated": false,
+        "isPainPoint": false,
+        "isCommunity": true,
+        "triggers": [
+          "new"
+        ],
+        "score": 3,
+        "responseType": "community_engagement"
+      },
+      "suggestedResponse": {
+        "thread": "Replacing my 11 year old Chevy pick up with a new Ranger Raptor",
+        "url": "https://www.bronco6g.com/forum/threads/replacing-my-11-year-old-chevy-pick-up-with-a-new-ranger-raptor.128198/",
+        "forum": "Bronco6g",
+        "type": "community_engagement",
+        "draft": "Congrats on the new ride! Welcome to the community.\n\nWhat made you go with this one? And what mods are you planning first?",
+        "productMention": null,
+        "confidence": "medium"
+      }
+    },
+    {
+      "title": "😉Tecbaba Tailgate Extender Coming with 20%OFF! | PROMOCODE: G7YNGUGD",
+      "url": "https://www.jeepgladiatorforum.com/forum/threads/%F0%9F%98%89tecbaba-tailgate-extender-coming-with-20-off-promocode-g7yngugd.104561/",
+      "forum": "Jeep Gladiator Forum",
+      "analysis": {
+        "isQuestion": false,
+        "isProductRelated": true,
+        "triggers": [
+          "tailgate"
+        ],
+        "score": 3,
+        "responseType": null
+      },
+      "suggestedResponse": {
+        "draft": "[Manual review needed - no template match]",
+        "productMention": null,
+        "confidence": "medium"
+      }
+    },
+    {
+      "forum": "JL Wrangler Forums",
+      "forumSlug": "jlwrangler",
+      "title": "Picking up my new ride this afternoon.",
+      "url": "https://www.jlwranglerforums.com/forum/threads/picking-up-my-new-ride-this-afternoon.163208/",
+      "description": "",
+      "author": "rickinAZ",
+      "pubDate": "2026-01-31T20:04:17.000Z",
+      "products": [
+        "Fliptop",
+        "Hard Top Lift",
+        "Door Cart",
+        "Tube Doors"
+      ],
+      "productCategory": "jeep",
+      "analysis": {
+        "isQuestion": false,
+        "isProductRelated": false,
+        "isPainPoint": false,
+        "isCommunity": true,
+        "triggers": [
+          "new"
+        ],
+        "score": 3,
+        "responseType": "community_engagement"
+      },
+      "suggestedResponse": {
+        "thread": "Picking up my new ride this afternoon.",
+        "url": "https://www.jlwranglerforums.com/forum/threads/picking-up-my-new-ride-this-afternoon.163208/",
+        "forum": "JL Wrangler Forums",
+        "type": "community_engagement",
+        "draft": "Congrats on the new ride! Welcome to the community.\n\nWhat made you go with this one? And what mods are you planning first?",
+        "productMention": null,
+        "confidence": "medium"
+      }
+    },
+    {
+      "forum": "JL Wrangler Forums",
+      "forumSlug": "jlwrangler",
+      "title": "2026 Rubicon X Coming with New Front LCA",
+      "url": "https://www.jlwranglerforums.com/forum/threads/2026-rubicon-x-coming-with-new-front-lca.163166/",
+      "description": "",
+      "author": "gato",
+      "pubDate": "2026-01-31T18:42:56.000Z",
+      "products": [
+        "Fliptop",
+        "Hard Top Lift",
+        "Door Cart",
+        "Tube Doors"
+      ],
+      "productCategory": "jeep",
+      "analysis": {
+        "isQuestion": false,
+        "isProductRelated": false,
+        "isPainPoint": false,
+        "isCommunity": true,
+        "triggers": [
+          "new"
+        ],
+        "score": 3,
+        "responseType": "community_engagement"
+      },
+      "suggestedResponse": {
+        "thread": "2026 Rubicon X Coming with New Front LCA",
+        "url": "https://www.jlwranglerforums.com/forum/threads/2026-rubicon-x-coming-with-new-front-lca.163166/",
+        "forum": "JL Wrangler Forums",
+        "type": "community_engagement",
+        "draft": "Congrats on the new ride! Welcome to the community.\n\nWhat made you go with this one? And what mods are you planning first?",
+        "productMention": null,
+        "confidence": "medium"
+      }
+    },
+    {
+      "forum": "JL Wrangler Forums",
+      "forumSlug": "jlwrangler",
+      "title": "Front/Trail Cam Shortcut on Uconnect 5 (12.3\")?",
+      "url": "https://www.jlwranglerforums.com/forum/threads/front-trail-cam-shortcut-on-uconnect-5-12-3.163207/",
+      "description": "",
+      "author": "needajeep",
+      "pubDate": "2026-01-31T18:34:07.000Z",
+      "products": [
+        "Fliptop",
+        "Hard Top Lift",
+        "Door Cart",
+        "Tube Doors"
+      ],
+      "productCategory": "jeep",
+      "analysis": {
+        "isQuestion": false,
+        "isProductRelated": false,
+        "isPainPoint": false,
+        "isCommunity": true,
+        "triggers": [
+          "trail"
+        ],
+        "score": 3,
+        "responseType": "community_engagement"
+      },
+      "suggestedResponse": {
+        "thread": "Front/Trail Cam Shortcut on Uconnect 5 (12.3\")?",
+        "url": "https://www.jlwranglerforums.com/forum/threads/front-trail-cam-shortcut-on-uconnect-5-12-3.163207/",
+        "forum": "JL Wrangler Forums",
+        "type": "community_engagement",
+        "draft": "That looks like an awesome trip! The scenery is incredible.\n\nHow did everything hold up? Any lessons learned for next time?",
+        "productMention": null,
+        "confidence": "medium"
+      }
+    },
+    {
+      "forum": "JL Wrangler Forums",
+      "forumSlug": "jlwrangler",
+      "title": "New Apple Watch Face",
+      "url": "https://www.jlwranglerforums.com/forum/threads/new-apple-watch-face.24964/",
+      "description": "",
+      "author": "Jondrew",
+      "pubDate": "2026-01-31T17:43:38.000Z",
+      "products": [
+        "Fliptop",
+        "Hard Top Lift",
+        "Door Cart",
+        "Tube Doors"
+      ],
+      "productCategory": "jeep",
+      "analysis": {
+        "isQuestion": false,
+        "isProductRelated": false,
+        "isPainPoint": false,
+        "isCommunity": true,
+        "triggers": [
+          "new"
+        ],
+        "score": 3,
+        "responseType": "community_engagement"
+      },
+      "suggestedResponse": {
+        "thread": "New Apple Watch Face",
+        "url": "https://www.jlwranglerforums.com/forum/threads/new-apple-watch-face.24964/",
+        "forum": "JL Wrangler Forums",
+        "type": "community_engagement",
+        "draft": "Congrats on the new ride! Welcome to the community.\n\nWhat made you go with this one? And what mods are you planning first?",
+        "productMention": null,
+        "confidence": "medium"
+      }
+    },
+    {
+      "title": "3W Floor Mats Giveaway | What have you done for your Gladiator this month?",
+      "url": "https://www.jeepgladiatorforum.com/forum/threads/3w-floor-mats-giveaway-what-have-you-done-for-your-gladiator-this-month.104527/",
+      "forum": "Jeep Gladiator Forum",
+      "analysis": {
+        "isQuestion": true,
+        "isProductRelated": false,
+        "triggers": [
+          "what"
+        ],
+        "score": 2,
+        "responseType": "question_helpful"
+      },
+      "suggestedResponse": {
+        "draft": "Good question! It depends on your specific setup.\n\nCan you share more about how you use your Gladiator? That'll help narrow down the options.",
+        "productMention": null,
+        "confidence": "medium"
+      }
+    },
+    {
+      "title": "Jeep Gladiators and Wranglers at 2026 Detroit Auto Show",
+      "url": "https://www.jeepgladiatorforum.com/forum/threads/jeep-gladiators-and-wranglers-at-2026-detroit-auto-show.104399/",
+      "forum": "Jeep Gladiator Forum",
+      "analysis": {
+        "isQuestion": true,
+        "isProductRelated": false,
+        "triggers": [
+          "how"
+        ],
+        "score": 2,
+        "responseType": "question_helpful"
+      },
+      "suggestedResponse": {
+        "draft": "Good question! It depends on your specific setup.\n\nCan you share more about how you use your Gladiator? That'll help narrow down the options.",
+        "productMention": null,
+        "confidence": "medium"
+      }
+    },
+    {
+      "title": "❗Tecbaba New Product | Hood Lift Supports Struts | 20%OFF | Promocode:YSLXLF54",
+      "url": "https://www.jeepgladiatorforum.com/forum/threads/%E2%9D%97tecbaba-new-product-hood-lift-supports-struts-20-off-promocode-yslxlf54.104219/",
+      "forum": "Jeep Gladiator Forum",
+      "analysis": {
+        "isQuestion": false,
+        "isProductRelated": false,
+        "triggers": [],
+        "score": 1,
+        "responseType": "welcome_newbie"
+      },
+      "suggestedResponse": {
+        "draft": "Welcome to the forum! Great looking Gladiator.\n\nWhat mods are you planning first?",
+        "productMention": null,
+        "confidence": "medium"
+      }
+    }
+  ]
+}
