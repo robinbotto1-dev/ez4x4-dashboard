@@ -1,0 +1,81 @@
+{
+  "updatedAt": "2026-01-31T21:40:00.000Z",
+  "highImpact": [
+    {
+      "id": 1,
+      "title": "Post first giveaway on Bronco6g",
+      "why": "Jay says giveaways drive massive engagement + organic reviews",
+      "effort": "30 min",
+      "impact": "High - builds community goodwill, generates UGC",
+      "link": "https://www.bronco6g.com/forum/",
+      "category": "ez4x4"
+    },
+    {
+      "id": 2,
+      "title": "Send banner update to Jay (Bronco6g)",
+      "why": "Current banner shows Jeep imagery instead of Bronco - confuses visitors",
+      "effort": "15 min",
+      "impact": "Medium - fixes brand consistency on main sponsored forum",
+      "link": null,
+      "category": "ez4x4"
+    },
+    {
+      "id": 3,
+      "title": "Forward JL Wrangler review thread to Jay",
+      "why": "Unbiased review says EZ4X4 is 'by far the best' - Jay can feature it once you're a sponsor",
+      "effort": "5 min",
+      "impact": "High - instant social proof on major forum",
+      "link": null,
+      "category": "ez4x4"
+    },
+    {
+      "id": 4,
+      "title": "Reach out to top 3 micro-influencers",
+      "why": "List is ready in docs - these have high engagement + affordable rates",
+      "effort": "20 min",
+      "impact": "High - authentic content from real users",
+      "link": null,
+      "category": "ez4x4"
+    }
+  ],
+  "quickWins": [
+    {
+      "id": 1,
+      "title": "Check today's forum engagement opportunities",
+      "description": "Dashboard has 17 ready-to-post responses with suggested copy",
+      "time": "10 min",
+      "link": "Switch to EZ4X4 workspace → Forum Engagement"
+    },
+    {
+      "id": 2,
+      "title": "Review competitor ad analysis",
+      "description": "See what Bestop and others are running, find gaps",
+      "time": "5 min",
+      "link": "EZ4X4 workspace → Documents → Reports"
+    },
+    {
+      "id": 3,
+      "title": "Copy a pre-written email template",
+      "description": "Templates ready for influencers, dealers, and customers",
+      "time": "2 min",
+      "link": "EZ4X4 workspace → Documents → Marketing"
+    }
+  ],
+  "blockers": [
+    {
+      "id": 1,
+      "title": "JL Wrangler & Gladiator sponsorship pricing",
+      "status": "Waiting on Jay",
+      "note": "Need to schedule follow-up call to negotiate multi-forum discount",
+      "category": "ez4x4"
+    },
+    {
+      "id": 2,
+      "title": "Thai competitor fake accounts",
+      "status": "Reported to Jay",
+      "note": "Jay will delete once EZ4X4 is officially a sponsor",
+      "category": "ez4x4"
+    }
+  ],
+  "recentDocs": []
+}

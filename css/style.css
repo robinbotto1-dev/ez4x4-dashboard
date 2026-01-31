@@ -571,6 +571,137 @@ body {
   font-weight: 500;
 }
 
+/* Action Sections */
+.action-section {
+  margin-bottom: 32px;
+}
+
+.action-section h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: var(--text-primary);
+}
+
+.action-section.priority h3 {
+  color: var(--accent);
+}
+
+.action-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.action-list.horizontal {
+  flex-direction: row;
+  overflow-x: auto;
+  padding-bottom: 8px;
+}
+
+.action-list.horizontal .action-card {
+  min-width: 250px;
+  flex-shrink: 0;
+}
+
+.action-card {
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+.action-card.high {
+  border-left: 4px solid var(--accent);
+}
+
+.action-card.quick {
+  border-left: 4px solid #fbbf24;
+}
+
+.action-card.blocker {
+  border-left: 4px solid #94a3b8;
+  opacity: 0.8;
+}
+
+.action-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}
+
+.action-title {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 14px;
+}
+
+.action-effort {
+  font-size: 12px;
+  color: var(--accent);
+  background: var(--accent-bg);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.action-why {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+.action-impact {
+  font-size: 13px;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.action-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.action-time {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.action-link {
+  display: inline-block;
+  font-size: 13px;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.action-link:hover {
+  text-decoration: underline;
+}
+
+.blocker-status {
+  font-size: 11px;
+  color: #64748b;
+  background: #f1f5f9;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.stat-card.accent {
+  border-color: var(--accent);
+  background: var(--accent-bg);
+}
+
+.stat-card.accent .stat-value {
+  color: var(--accent);
+}
+
 /* Activity Section */
 .activity-section {
   margin-top: 24px;

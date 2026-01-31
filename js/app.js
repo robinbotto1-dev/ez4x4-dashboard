@@ -651,17 +651,25 @@ async function showWorkspaceContent(workspace, workspaceId) {
       </section>
     `;
   } else if (workspaceId === 'robin') {
-    // Load Robin activity data
+    // Load Robin data
     let activity = { completed: [], stats: {} };
+    let actions = { highImpact: [], quickWins: [], blockers: [] };
+    
     try {
       const res = await fetch('data/robin/activity.json?t=' + Date.now());
       if (res.ok) activity = await res.json();
-    } catch (e) {
-      console.log('Could not load Robin activity');
-    }
+    } catch (e) {}
+    
+    try {
+      const res = await fetch('data/robin/actions.json?t=' + Date.now());
+      if (res.ok) actions = await res.json();
+    } catch (e) {}
     
     const stats = activity.stats || {};
     const completed = activity.completed || [];
+    const highImpact = actions.highImpact || [];
+    const quickWins = actions.quickWins || [];
+    const blockers = actions.blockers || [];
     
     const formatTime = (iso) => {
       const d = new Date(iso);
@@ -671,29 +679,84 @@ async function showWorkspaceContent(workspace, workspaceId) {
     content.innerHTML = `
       <section class="section active">
         <header class="section-header">
-          <h2>🦅 Robin Activity Dashboard</h2>
-          <p>Everything I'm working on and have completed</p>
+          <h2>🦅 Robin Dashboard</h2>
+          <p>Your command center - highest impact actions first</p>
         </header>
         
         <div class="stats-grid">
           <div class="stat-card">
             <span class="stat-value">${stats.totalTasks || 0}</span>
-            <span class="stat-label">Total Tasks</span>
+            <span class="stat-label">Tasks Done</span>
           </div>
           <div class="stat-card">
             <span class="stat-value">${stats.tasksToday || 0}</span>
-            <span class="stat-label">Tasks Today</span>
+            <span class="stat-label">Today</span>
           </div>
           <div class="stat-card">
             <span class="stat-value">${stats.docsCreated || 0}</span>
-            <span class="stat-label">Docs Created</span>
+            <span class="stat-label">Docs</span>
+          </div>
+          <div class="stat-card accent">
+            <span class="stat-value">${highImpact.length}</span>
+            <span class="stat-label">High Impact</span>
           </div>
         </div>
         
+        <!-- HIGH IMPACT ACTIONS -->
+        <div class="action-section priority">
+          <h3>🔥 Do These Now (Highest Return)</h3>
+          <div class="action-list">
+            ${highImpact.map(a => `
+              <div class="action-card high">
+                <div class="action-header">
+                  <span class="action-title">${a.title}</span>
+                  <span class="action-effort">${a.effort}</span>
+                </div>
+                <p class="action-why"><strong>Why:</strong> ${a.why}</p>
+                <p class="action-impact">💥 ${a.impact}</p>
+                ${a.link ? `<a href="${a.link}" target="_blank" class="action-link">Open →</a>` : ''}
+              </div>
+            `).join('')}
+          </div>
+        </div>
+        
+        <!-- QUICK WINS -->
+        <div class="action-section">
+          <h3>⚡ Quick Wins (Under 10 min)</h3>
+          <div class="action-list horizontal">
+            ${quickWins.map(q => `
+              <div class="action-card quick">
+                <span class="action-title">${q.title}</span>
+                <p class="action-desc">${q.description}</p>
+                <span class="action-time">⏱ ${q.time}</span>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+        
+        <!-- BLOCKERS -->
+        ${blockers.length > 0 ? `
+        <div class="action-section">
+          <h3>🚧 Blockers & Waiting</h3>
+          <div class="action-list">
+            ${blockers.map(b => `
+              <div class="action-card blocker">
+                <div class="action-header">
+                  <span class="action-title">${b.title}</span>
+                  <span class="blocker-status">${b.status}</span>
+                </div>
+                <p class="action-desc">${b.note}</p>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+        ` : ''}
+        
+        <!-- COMPLETED TASKS -->
         <div class="activity-section">
-          <h3>✅ Completed Tasks</h3>
+          <h3>✅ Recently Completed</h3>
           <div class="activity-list">
-            ${completed.map(task => `
+            ${completed.slice(0, 10).map(task => `
               <div class="activity-item">
                 <div class="activity-header">
                   <span class="activity-title">${task.task}</span>
