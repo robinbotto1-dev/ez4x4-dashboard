@@ -1,6 +1,6 @@
 {
-  "status": "available",
-  "task": "Ready",
-  "updatedAt": "2026-01-31T22:38:26.459Z",
-  "details": "IDs now click-to-copy"
+  "status": "working",
+  "task": "Checking deploy",
+  "updatedAt": "2026-01-31T22:39:25.727Z",
+  "details": "Verifying GitHub Pages"
 }
