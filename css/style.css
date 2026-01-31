@@ -1959,3 +1959,18 @@ body.locked .status-widget {
   color: var(--accent);
   border-bottom-color: var(--accent);
 }
+
+/* Clickable IDs */
+.clickable {
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.clickable:hover {
+  transform: scale(1.05);
+  opacity: 0.8;
+}
+
+.clickable:active {
+  transform: scale(0.95);
+}

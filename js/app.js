@@ -808,7 +808,7 @@ async function showWorkspaceContent(workspace, workspaceId) {
             </div>
             ${gabrielQueue.filter(a => !a.completed).map(a => `
               <div class="queue-row" data-id="${a.id}">
-                <span class="q-id">${a.id}</span>
+                <span class="q-id clickable" onclick="copyId('${a.id}')" title="Click to copy">${a.id}</span>
                 <span class="q-task">${a.link ? `<a href="${a.link}" target="_blank">${a.title}</a>` : a.title}</span>
                 <span class="q-impact">${a.impact.replace('Quick win - ', '').replace('Unblocks ', '→ ')}</span>
                 <span class="q-time">${a.effort}</span>
@@ -830,7 +830,7 @@ async function showWorkspaceContent(workspace, workspaceId) {
             </div>
             ${robinQueue.map(a => `
               <div class="queue-row ${a.status === 'in_progress' ? 'active' : ''}">
-                <span class="q-id">${a.id}</span>
+                <span class="q-id clickable" onclick="copyId('${a.id}')" title="Click to copy">${a.id}</span>
                 <span class="q-task">${a.title}</span>
                 <span class="q-status">${a.status === 'in_progress' ? '🔄' : '⏳'}</span>
                 <span class="q-progress">${a.progress || '-'}</span>
@@ -852,7 +852,7 @@ async function showWorkspaceContent(workspace, workspaceId) {
             </div>
             ${blockers.map(b => `
               <div class="blocker-row" data-id="${b.id}">
-                <span class="blocker-id">${b.id}</span>
+                <span class="blocker-id clickable" onclick="copyId('${b.id}')" title="Click to copy">${b.id}</span>
                 <span class="blocker-title">${b.title}</span>
                 <span class="blocker-status">${b.status}</span>
                 <button class="blocker-clear" onclick="completeItem('${b.id}', 'blocker')">✓</button>
@@ -1005,6 +1005,13 @@ document.addEventListener('click', (e) => {
     document.querySelector('.workspace-selector')?.classList.remove('open');
   }
 });
+
+// Copy ID to clipboard
+function copyId(id) {
+  navigator.clipboard.writeText(id).then(() => {
+    showToast(`Copied: ${id}`);
+  });
+}
 
 // Complete an item from Gabriel's queue or blockers
 async function completeItem(id, type = 'task') {
