@@ -1,6 +1,6 @@
 {
-  "status": "available",
-  "task": "ADHD dashboard complete",
-  "updatedAt": "2026-01-31T21:42:00.144Z",
-  "details": "Added high-impact actions, quick wins, and blockers sections. Designed for fast scanning and immediate action."
+  "status": "working",
+  "task": "Fixing sidebar per workspace",
+  "updatedAt": "2026-01-31T21:43:42.278Z",
+  "details": "Making sidebar nav contextual - different items for each workspace."
 }
