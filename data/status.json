@@ -1,6 +1,6 @@
 {
-  "status": "working",
-  "task": "Showing off yellow status",
-  "updatedAt": "2026-01-31T21:25:17.733Z",
-  "details": "This is what it looks like when I'm actively working on something. The badge pulses to show activity!"
+  "status": "available",
+  "task": "Back to available",
+  "updatedAt": "2026-01-31T21:25:38.885Z",
+  "details": "Demo complete! You saw yellow. Now back to blue."
 }
