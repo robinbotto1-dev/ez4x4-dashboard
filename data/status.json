@@ -1,6 +1,6 @@
 {
-  "status": "Added Gabriel's Queue vs Robin's Queue, vertical timeline for completions, Generate Schedule button, business health cards. Site should update in ~1 min.",
-  "task": "Command Center rebuilt",
-  "updatedAt": "2026-01-31T21:53:51.522Z",
-  "details": null
+  "status": "working",
+  "task": "Fixing status updates",
+  "updatedAt": "2026-01-31T21:54:28.072Z",
+  "details": "Making sure status properly shows working/available"
 }
