@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EZ4X4 Command Center</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <nav class="sidebar">
+    <div class="logo">
+      <h1>🚙 EZ4X4</h1>
+      <span class="subtitle">Command Center</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#engagement" class="active" data-section="engagement">💬 Forum Engagement</a></li>
+      <li><a href="#intel" data-section="intel">📊 Daily Intel</a></li>
+      <li><a href="#threads" data-section="threads">📝 Thread Ideas</a></li>
+      <li><a href="#docs" data-section="docs">📁 Documents</a></li>
+      <li><a href="#strategy" data-section="strategy">🎯 Strategy</a></li>
+    </ul>
+    <div class="last-updated">
+      <span id="lastUpdated">Loading...</span>
+    </div>
+  </nav>
+
+  <main class="content">
+    <!-- Forum Engagement Section -->
+    <section id="engagement" class="section active">
+      <header class="section-header">
+        <h2>💬 Forum Engagement</h2>
+        <p>Daily response opportunities - 10 per forum</p>
+        <div class="filters">
+          <button class="filter-btn active" data-forum="all">All</button>
+          <button class="filter-btn" data-forum="bronco6g">Bronco6g</button>
+          <button class="filter-btn" data-forum="gladiator">Gladiator</button>
+          <button class="filter-btn" data-forum="jlwrangler">JL Wrangler</button>
+        </div>
+        <div class="progress-bar">
+          <div class="progress" id="engagementProgress"></div>
+          <span id="engagementCount">0/30 completed</span>
+        </div>
+      </header>
+      <div id="engagementList" class="card-list">
+        <!-- Populated by JS -->
+      </div>
+    </section>
+
+    <!-- Daily Intel Section -->
+    <section id="intel" class="section">
+      <header class="section-header">
+        <h2>📊 Daily Intel Report</h2>
+        <p>Opportunities from Reddit & Forums</p>
+      </header>
+      <div id="intelList" class="card-list">
+        <!-- Populated by JS -->
+      </div>
+    </section>
+
+    <!-- Thread Ideas Section -->
+    <section id="threads" class="section">
+      <header class="section-header">
+        <h2>📝 New Thread Ideas</h2>
+        <p>Post these on Mon/Wed/Fri - 1 per forum</p>
+      </header>
+      <div id="threadsList" class="card-list">
+        <!-- Populated by JS -->
+      </div>
+    </section>
+
+    <!-- Documents Section -->
+    <section id="docs" class="section">
+      <header class="section-header">
+        <h2>📁 Documents</h2>
+        <p>Reference materials and reports</p>
+      </header>
+      <div class="docs-grid">
+        <div class="doc-category">
+          <h3>📈 Reports</h3>
+          <ul id="reportsList"></ul>
+        </div>
+        <div class="doc-category">
+          <h3>🎯 Competitor Intel</h3>
+          <ul id="competitorList"></ul>
+        </div>
+        <div class="doc-category">
+          <h3>👥 Influencers</h3>
+          <ul id="influencerList"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Strategy Section -->
+    <section id="strategy" class="section">
+      <header class="section-header">
+        <h2>🎯 Strategy</h2>
+        <p>Forum playbook and best practices</p>
+      </header>
+      <div id="strategyContent" class="markdown-content">
+        <!-- Populated by JS -->
+      </div>
+    </section>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
