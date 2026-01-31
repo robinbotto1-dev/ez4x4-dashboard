@@ -556,8 +556,8 @@ async function refreshStatus(event) {
   }, 1500);
 }
 
-// Poll status every 30 seconds
-setInterval(loadStatus, 30000);
+// Poll status every 10 seconds
+setInterval(loadStatus, 10000);
 
 // Workspace functions
 function toggleWorkspaceDropdown() {
