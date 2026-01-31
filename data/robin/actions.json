@@ -1,81 +1,137 @@
 {
-  "updatedAt": "2026-01-31T21:40:00.000Z",
-  "highImpact": [
+  "updatedAt": "2026-01-31T21:51:00.000Z",
+  "gabrielQueue": [
     {
-      "id": 1,
-      "title": "Post first giveaway on Bronco6g",
-      "why": "Jay says giveaways drive massive engagement + organic reviews",
-      "effort": "30 min",
-      "impact": "High - builds community goodwill, generates UGC",
-      "link": "https://www.bronco6g.com/forum/",
-      "category": "ez4x4"
-    },
-    {
-      "id": 2,
-      "title": "Send banner update to Jay (Bronco6g)",
-      "why": "Current banner shows Jeep imagery instead of Bronco - confuses visitors",
+      "id": "g1",
+      "title": "Publish Military Discount Page",
+      "source": "PROJECT-TRACKER.md",
+      "impact": "Quick win - drives conversions",
       "effort": "15 min",
-      "impact": "Medium - fixes brand consistency on main sponsored forum",
-      "link": null,
-      "category": "ez4x4"
+      "completed": false
     },
     {
-      "id": 3,
-      "title": "Forward JL Wrangler review thread to Jay",
-      "why": "Unbiased review says EZ4X4 is 'by far the best' - Jay can feature it once you're a sponsor",
-      "effort": "5 min",
-      "impact": "High - instant social proof on major forum",
-      "link": null,
-      "category": "ez4x4"
-    },
-    {
-      "id": 4,
-      "title": "Reach out to top 3 micro-influencers",
-      "why": "List is ready in docs - these have high engagement + affordable rates",
+      "id": "g2",
+      "title": "Review Group Buys Program draft",
+      "source": "PROJECT-TRACKER.md",
+      "impact": "New revenue channel",
       "effort": "20 min",
-      "impact": "High - authentic content from real users",
-      "link": null,
-      "category": "ez4x4"
+      "completed": false
+    },
+    {
+      "id": "g3",
+      "title": "Review Founder Chat landing page copy",
+      "source": "PROJECT-TRACKER.md",
+      "impact": "Unblocks launch",
+      "effort": "10 min",
+      "completed": false
+    },
+    {
+      "id": "g4",
+      "title": "Decide: Forum accounts - fresh or existing?",
+      "source": "MARKETING-PLAN.md",
+      "impact": "Unblocks forum infiltration",
+      "effort": "5 min",
+      "completed": false
+    },
+    {
+      "id": "g5",
+      "title": "Decide: Content auto-publish or queue for review?",
+      "source": "MARKETING-PLAN.md",
+      "impact": "Unblocks content velocity",
+      "effort": "5 min",
+      "completed": false
+    },
+    {
+      "id": "g6",
+      "title": "Connect Chrome relay for Phase 2 tactics",
+      "source": "MARKETING-PLAN.md",
+      "impact": "Unlocks browser automation",
+      "effort": "2 min",
+      "completed": false
     }
   ],
-  "quickWins": [
+  "robinQueue": [
     {
-      "id": 1,
-      "title": "Check today's forum engagement opportunities",
-      "description": "Dashboard has 17 ready-to-post responses with suggested copy",
-      "time": "10 min",
-      "link": "Switch to EZ4X4 workspace → Forum Engagement"
+      "id": "r1",
+      "title": "Add 38 more accelerators to database",
+      "source": "PROJECT-TRACKER.md",
+      "status": "in_progress",
+      "progress": "12/50 done"
     },
     {
-      "id": 2,
-      "title": "Review competitor ad analysis",
-      "description": "See what Bestop and others are running, find gaps",
-      "time": "5 min",
-      "link": "EZ4X4 workspace → Documents → Reports"
+      "id": "r2",
+      "title": "Set up competitor price monitoring",
+      "source": "MARKETING-PLAN.md",
+      "status": "not_started",
+      "progress": null
     },
     {
-      "id": 3,
-      "title": "Copy a pre-written email template",
-      "description": "Templates ready for influencers, dealers, and customers",
-      "time": "2 min",
-      "link": "EZ4X4 workspace → Documents → Marketing"
+      "id": "r3",
+      "title": "Build 100-directory launch list",
+      "source": "MARKETING-PLAN.md",
+      "status": "not_started",
+      "progress": null
+    },
+    {
+      "id": "r4",
+      "title": "Hunt emails for top 10 YouTube influencers",
+      "source": "MARKETING-PLAN.md",
+      "status": "not_started",
+      "progress": null
+    },
+    {
+      "id": "r5",
+      "title": "SEO gap analysis + 20 content briefs",
+      "source": "MARKETING-PLAN.md",
+      "status": "not_started",
+      "progress": null
+    },
+    {
+      "id": "r6",
+      "title": "Write 3 more blog posts (SEO)",
+      "source": "PROJECT-TRACKER.md",
+      "status": "in_progress",
+      "progress": "2/5 done"
+    },
+    {
+      "id": "r7",
+      "title": "Scrape competitor reviews for pain points",
+      "source": "MARKETING-PLAN.md",
+      "status": "not_started",
+      "progress": null
     }
   ],
   "blockers": [
     {
-      "id": 1,
+      "id": "b1",
       "title": "JL Wrangler & Gladiator sponsorship pricing",
       "status": "Waiting on Jay",
       "note": "Need to schedule follow-up call to negotiate multi-forum discount",
       "category": "ez4x4"
     },
     {
-      "id": 2,
+      "id": "b2",
       "title": "Thai competitor fake accounts",
       "status": "Reported to Jay",
       "note": "Jay will delete once EZ4X4 is officially a sponsor",
       "category": "ez4x4"
     }
   ],
-  "recentDocs": []
+  "businessHealth": {
+    "ez4x4": {
+      "revenue": "$6.28M/month",
+      "affiliates": 71,
+      "affiliateGoal": 100,
+      "forumRank": 18,
+      "forumRankGoal": 10,
+      "assets": 29
+    },
+    "founderChat": {
+      "price": "$29.99/month",
+      "botStatus": "running",
+      "programs": 18,
+      "programsGoal": 50,
+      "nextDeadline": "YC Spring 2026 (Feb 9)"
+    }
+  }
 }

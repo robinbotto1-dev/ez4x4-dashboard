@@ -1229,3 +1229,223 @@ body.locked .status-widget {
     max-width: calc(100% - 24px);
   }
 }
+
+/* Command Center - Timeline */
+.timeline-section {
+  margin-top: 32px;
+}
+
+.timeline-section h3 {
+  margin-bottom: 16px;
+  font-size: 16px;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 20px;
+  border-left: 2px solid var(--border);
+}
+
+.timeline-day {
+  position: relative;
+  margin-bottom: 24px;
+}
+
+.timeline-day::before {
+  content: '';
+  position: absolute;
+  left: -26px;
+  top: 4px;
+  width: 10px;
+  height: 10px;
+  background: var(--accent);
+  border-radius: 50%;
+  border: 2px solid var(--bg-white);
+}
+
+.timeline-date {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.timeline-items {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 12px;
+  background: var(--bg-primary);
+  border-radius: var(--radius);
+  font-size: 13px;
+}
+
+.timeline-time {
+  color: var(--text-muted);
+  font-size: 12px;
+  min-width: 50px;
+}
+
+.timeline-task {
+  flex: 1;
+  color: var(--text-primary);
+}
+
+.timeline-duration {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.timeline-empty {
+  color: var(--text-muted);
+  font-style: italic;
+  font-size: 13px;
+}
+
+/* Command Center - Health Cards */
+.health-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.health-card {
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+}
+
+.health-header {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.health-stat {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.health-metrics {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* Command Center - Queue Cards */
+.action-card.gabriel {
+  border-left: 4px solid var(--accent);
+}
+
+.action-card.robin {
+  border-left: 4px solid var(--success);
+}
+
+.action-card.robin.in-progress {
+  background: linear-gradient(135deg, #f0fff4 0%, #ffffff 100%);
+}
+
+.action-id {
+  display: inline-block;
+  padding: 2px 8px;
+  background: var(--accent-bg);
+  color: var(--accent);
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  margin-right: 8px;
+}
+
+.action-source {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.action-progress {
+  font-size: 12px;
+  color: var(--success);
+  font-weight: 500;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 500;
+  background: var(--bg-primary);
+  color: var(--text-muted);
+}
+
+.status-badge.working {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.action-card .btn-success {
+  margin-top: 12px;
+}
+
+.completing-msg {
+  padding: 20px;
+  text-align: center;
+  color: var(--success);
+  font-weight: 500;
+}
+
+/* Schedule Modal */
+.schedule-block {
+  margin: 24px 0;
+}
+
+.schedule-block h3 {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+.schedule-item {
+  display: flex;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.schedule-time {
+  min-width: 50px;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.schedule-task {
+  flex: 1;
+  color: var(--text-primary);
+}
+
+.schedule-item.robin-task {
+  background: #f0fff4;
+  margin: 0 -16px;
+  padding: 10px 16px;
+  border-radius: var(--radius);
+}
+
+.schedule-summary {
+  background: var(--accent-bg);
+  padding: 16px;
+  border-radius: var(--radius);
+  margin-top: 24px;
+  font-size: 14px;
+  line-height: 1.8;
+}

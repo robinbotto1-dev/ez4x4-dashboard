@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-01-31T21:44:36.768Z",
+  "updatedAt": "2026-01-31T21:51:00.000Z",
   "currentTask": null,
   "stats": {
     "totalTasks": 21,
@@ -7,133 +7,153 @@
     "docsCreated": 50,
     "dashboardBuilt": "2026-01-31"
   },
-  "completed": [
-    {
-      "id": 21,
-      "task": "Fixing sidebar per workspace",
-      "details": "Sidebar now shows different nav items per workspace. Robin has Dashboard + Full History. EZ4X4 has all the forum stuff.",
-      "duration": "5 min",
-      "completedAt": "2026-01-31T21:44:36.768Z"
-    },
-    {
-      "id": 20,
-      "task": "Building ADHD-friendly action dashboard",
-      "details": "Added high-impact actions, quick wins, and blockers sections. Designed for fast scanning and immediate action.",
-      "duration": "8 min",
-      "completedAt": "2026-01-31T21:42:00.145Z"
-    },
-    {
-      "id": 19,
-      "task": "Making logging automatic",
-      "details": "Status script now automatically logs tasks to history when going from working to available",
-      "duration": "5 min",
-      "completedAt": "2026-01-31T21:38:59.732Z"
-    },
-    {
-      "id": 18,
-      "task": "Robin as default workspace",
-      "details": "Dashboard now loads Robin workspace first instead of EZ4X4",
-      "duration": "3 min",
-      "completedAt": "2026-01-31T21:37:46.118Z"
-    },
-    {
-      "id": 17,
-      "task": "Status text truncation fix",
-      "details": "Task title now shows full text when status widget is expanded",
-      "duration": "2 min",
-      "completedAt": "2026-01-31T21:37:41.247Z"
-    },
-    {
-      "id": 16,
-      "task": "Robin dashboard built",
-      "details": "Full activity tracker with stats, completed tasks list, and history. Includes log-activity.js helper script.",
-      "duration": "15 min",
-      "completedAt": "2026-01-31T21:31:20.429Z"
-    },
-    {
-      "id": 15,
-      "task": "Status widget color fix",
-      "details": "Changed to colorblind-friendly: blue=available, yellow=working, gray=offline",
-      "completedAt": "2026-01-31T21:28:00.000Z",
-      "duration": "5 min"
-    },
-    {
-      "id": 14,
-      "task": "Added all documents to dashboard",
-      "details": "50 total docs: 40 EZ4X4 + 10 Founder Chat across all categories",
-      "completedAt": "2026-01-31T21:20:00.000Z",
-      "duration": "15 min"
-    },
-    {
-      "id": 13,
-      "task": "Workspace switcher",
-      "details": "Added dropdown to switch between EZ4X4, Founder Chat, and Robin workspaces",
-      "completedAt": "2026-01-31T21:08:00.000Z",
-      "duration": "10 min"
-    },
-    {
-      "id": 12,
-      "task": "Stripe-style redesign",
-      "details": "Complete UI overhaul: light mode, clean typography, purple accents",
-      "completedAt": "2026-01-31T20:57:00.000Z",
-      "duration": "8 min"
-    },
-    {
-      "id": 11,
-      "task": "Status widget with refresh button",
-      "details": "Expandable status showing current task, details, and manual refresh",
-      "completedAt": "2026-01-31T20:48:00.000Z",
-      "duration": "15 min"
-    },
-    {
-      "id": 10,
-      "task": "Password protection",
-      "details": "Added client-side password gate (123321)",
-      "completedAt": "2026-01-31T20:33:00.000Z",
-      "duration": "5 min"
-    },
-    {
-      "id": 9,
-      "task": "Mobile layout fix",
-      "details": "Fixed flex-direction for mobile responsive layout",
-      "completedAt": "2026-01-31T20:28:00.000Z",
-      "duration": "3 min"
-    },
-    {
-      "id": 8,
-      "task": "EZ4X4 Command Center dashboard",
-      "details": "Built full dashboard with engagement opportunities, intel, thread ideas, and docs",
-      "completedAt": "2026-01-31T20:19:00.000Z",
-      "duration": "45 min"
-    },
-    {
-      "id": 7,
-      "task": "Forum engagement scraper",
-      "details": "Built scrapers for Bronco6g, Gladiator, JL Wrangler forums with AI-powered response suggestions",
-      "completedAt": "2026-01-31T20:05:00.000Z",
-      "duration": "60 min"
-    },
-    {
-      "id": 6,
-      "task": "Daily intel system",
-      "details": "Reddit + forum scraper with keyword matching and opportunity scoring",
-      "completedAt": "2026-01-31T19:30:00.000Z",
-      "duration": "45 min"
-    },
-    {
-      "id": 5,
-      "task": "Forum strategy notes",
-      "details": "Documented full meeting with Jay - posting times, giveaway strategy, best practices",
-      "completedAt": "2026-01-31T19:03:00.000Z",
-      "duration": "20 min"
-    },
-    {
-      "id": 4,
-      "task": "Gmail & Calendar integration",
-      "details": "Set up OAuth tokens for robinbotto1@gmail.com",
-      "completedAt": "2026-01-31T15:00:00.000Z",
-      "duration": "15 min"
-    }
-  ],
-  "history": []
+  "timeline": {
+    "2026-01-31": [
+      {
+        "id": 21,
+        "task": "Fixing sidebar per workspace",
+        "time": "16:44",
+        "duration": "5 min"
+      },
+      {
+        "id": 20,
+        "task": "Building ADHD-friendly action dashboard",
+        "time": "16:42",
+        "duration": "8 min"
+      },
+      {
+        "id": 19,
+        "task": "Making logging automatic",
+        "time": "16:38",
+        "duration": "5 min"
+      },
+      {
+        "id": 18,
+        "task": "Robin as default workspace",
+        "time": "16:37",
+        "duration": "3 min"
+      },
+      {
+        "id": 17,
+        "task": "Status text truncation fix",
+        "time": "16:37",
+        "duration": "2 min"
+      },
+      {
+        "id": 16,
+        "task": "Robin dashboard built",
+        "time": "16:31",
+        "duration": "15 min"
+      },
+      {
+        "id": 15,
+        "task": "Status widget color fix",
+        "time": "16:28",
+        "duration": "5 min"
+      },
+      {
+        "id": 14,
+        "task": "Added all documents to dashboard",
+        "time": "16:20",
+        "duration": "15 min"
+      },
+      {
+        "id": 13,
+        "task": "Workspace switcher",
+        "time": "16:08",
+        "duration": "10 min"
+      },
+      {
+        "id": 12,
+        "task": "Stripe-style redesign",
+        "time": "15:57",
+        "duration": "8 min"
+      },
+      {
+        "id": 11,
+        "task": "Status widget with refresh button",
+        "time": "15:48",
+        "duration": "15 min"
+      },
+      {
+        "id": 10,
+        "task": "Password protection",
+        "time": "15:33",
+        "duration": "5 min"
+      },
+      {
+        "id": 9,
+        "task": "Mobile layout fix",
+        "time": "15:28",
+        "duration": "3 min"
+      },
+      {
+        "id": 8,
+        "task": "EZ4X4 Command Center dashboard",
+        "time": "15:19",
+        "duration": "45 min"
+      },
+      {
+        "id": 7,
+        "task": "Forum engagement scraper",
+        "time": "15:05",
+        "duration": "60 min"
+      },
+      {
+        "id": 6,
+        "task": "Daily intel system",
+        "time": "14:30",
+        "duration": "45 min"
+      },
+      {
+        "id": 5,
+        "task": "Forum strategy notes",
+        "time": "14:03",
+        "duration": "20 min"
+      },
+      {
+        "id": 4,
+        "task": "Gmail & Calendar integration",
+        "time": "10:00",
+        "duration": "15 min"
+      }
+    ],
+    "2026-01-30": [
+      {
+        "id": 3,
+        "task": "Communication tools built",
+        "time": "23:00",
+        "duration": "30 min"
+      },
+      {
+        "id": 2,
+        "task": "29 asset files ready",
+        "time": "18:00",
+        "duration": "2 hours"
+      },
+      {
+        "id": 1,
+        "task": "Competitor analysis complete",
+        "time": "15:00",
+        "duration": "1 hour"
+      }
+    ],
+    "2026-01-29": [
+      {
+        "task": "Notion hub live",
+        "time": "20:00",
+        "duration": "45 min"
+      },
+      {
+        "task": "Discord bot shipped with all features",
+        "time": "18:00",
+        "duration": "3 hours"
+      },
+      {
+        "task": "Infrastructure files created",
+        "time": "14:00",
+        "duration": "1 hour"
+      }
+    ]
+  }
 }

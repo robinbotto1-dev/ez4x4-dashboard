@@ -714,8 +714,8 @@ async function showWorkspaceContent(workspace, workspaceId) {
     `;
   } else if (workspaceId === 'robin') {
     // Load Robin data
-    let activity = { completed: [], stats: {} };
-    let actions = { highImpact: [], quickWins: [], blockers: [] };
+    let activity = { timeline: {}, stats: {} };
+    let actions = { gabrielQueue: [], robinQueue: [], blockers: [], businessHealth: {} };
     
     try {
       const res = await fetch('data/robin/activity.json?t=' + Date.now());
@@ -728,69 +728,93 @@ async function showWorkspaceContent(workspace, workspaceId) {
     } catch (e) {}
     
     const stats = activity.stats || {};
-    const completed = activity.completed || [];
-    const highImpact = actions.highImpact || [];
-    const quickWins = actions.quickWins || [];
+    const timeline = activity.timeline || {};
+    const gabrielQueue = actions.gabrielQueue || [];
+    const robinQueue = actions.robinQueue || [];
     const blockers = actions.blockers || [];
+    const health = actions.businessHealth || {};
     
-    const formatTime = (iso) => {
-      const d = new Date(iso);
-      return d.toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
-    };
+    // Generate timeline HTML
+    const timelineDates = Object.keys(timeline).sort().reverse().slice(0, 5);
+    const timelineHtml = timelineDates.map(date => {
+      const items = timeline[date] || [];
+      const dateLabel = new Date(date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+      return `
+        <div class="timeline-day">
+          <div class="timeline-date">${dateLabel}</div>
+          <div class="timeline-items">
+            ${items.length === 0 ? '<div class="timeline-empty">No completions</div>' : items.map(item => `
+              <div class="timeline-item">
+                <span class="timeline-time">${item.time}</span>
+                <span class="timeline-task">✓ ${item.task}</span>
+                <span class="timeline-duration">${item.duration}</span>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }).join('');
     
     content.innerHTML = `
       <section class="section active">
         <header class="section-header">
-          <h2>🦅 Robin Dashboard</h2>
-          <p>Your command center - highest impact actions first</p>
+          <h2>🎯 Command Center</h2>
+          <p>High-return actions for both of us</p>
+          <button class="btn btn-primary" onclick="generateSchedule()" style="margin-top: 12px;">📅 Generate Today's Schedule</button>
         </header>
         
-        <div class="stats-grid">
-          <div class="stat-card">
-            <span class="stat-value">${stats.totalTasks || 0}</span>
-            <span class="stat-label">Tasks Done</span>
+        <!-- BUSINESS HEALTH -->
+        <div class="health-grid">
+          <div class="health-card">
+            <div class="health-header">🚙 EZ4X4</div>
+            <div class="health-stat">${health.ez4x4?.revenue || '$6.28M/mo'}</div>
+            <div class="health-metrics">
+              <span>Affiliates: ${health.ez4x4?.affiliates || 71}/${health.ez4x4?.affiliateGoal || 100}</span>
+              <span>Forum: #${health.ez4x4?.forumRank || 18} (goal: #${health.ez4x4?.forumRankGoal || 10})</span>
+            </div>
           </div>
-          <div class="stat-card">
-            <span class="stat-value">${stats.tasksToday || 0}</span>
-            <span class="stat-label">Today</span>
-          </div>
-          <div class="stat-card">
-            <span class="stat-value">${stats.docsCreated || 0}</span>
-            <span class="stat-label">Docs</span>
-          </div>
-          <div class="stat-card accent">
-            <span class="stat-value">${highImpact.length}</span>
-            <span class="stat-label">High Impact</span>
+          <div class="health-card">
+            <div class="health-header">💬 Founder Chat</div>
+            <div class="health-stat">${health.founderChat?.price || '$29.99/mo'}</div>
+            <div class="health-metrics">
+              <span>Programs: ${health.founderChat?.programs || 18}/${health.founderChat?.programsGoal || 50}</span>
+              <span>Next: ${health.founderChat?.nextDeadline || 'YC Feb 9'}</span>
+            </div>
           </div>
         </div>
         
-        <!-- HIGH IMPACT ACTIONS -->
+        <!-- GABRIEL'S QUEUE -->
         <div class="action-section priority">
-          <h3>🔥 Do These Now (Highest Return)</h3>
+          <h3>👤 Your Queue (Needs You)</h3>
           <div class="action-list">
-            ${highImpact.map(a => `
-              <div class="action-card high">
+            ${gabrielQueue.filter(a => !a.completed).map(a => `
+              <div class="action-card gabriel" data-id="${a.id}">
                 <div class="action-header">
+                  <span class="action-id">${a.id}</span>
                   <span class="action-title">${a.title}</span>
                   <span class="action-effort">${a.effort}</span>
                 </div>
-                <p class="action-why"><strong>Why:</strong> ${a.why}</p>
                 <p class="action-impact">💥 ${a.impact}</p>
-                ${a.link ? `<a href="${a.link}" target="_blank" class="action-link">Open →</a>` : ''}
+                <p class="action-source">📄 ${a.source}</p>
+                <button class="btn btn-success" onclick="completeItem('${a.id}')">✅ Complete</button>
               </div>
             `).join('')}
           </div>
         </div>
         
-        <!-- QUICK WINS -->
+        <!-- ROBIN'S QUEUE -->
         <div class="action-section">
-          <h3>⚡ Quick Wins (Under 10 min)</h3>
-          <div class="action-list horizontal">
-            ${quickWins.map(q => `
-              <div class="action-card quick">
-                <span class="action-title">${q.title}</span>
-                <p class="action-desc">${q.description}</p>
-                <span class="action-time">⏱ ${q.time}</span>
+          <h3>🦅 Robin's Queue (I'll Handle)</h3>
+          <div class="action-list">
+            ${robinQueue.map(a => `
+              <div class="action-card robin ${a.status === 'in_progress' ? 'in-progress' : ''}">
+                <div class="action-header">
+                  <span class="action-id">${a.id}</span>
+                  <span class="action-title">${a.title}</span>
+                  ${a.status === 'in_progress' ? '<span class="status-badge working">In Progress</span>' : '<span class="status-badge">Queued</span>'}
+                </div>
+                ${a.progress ? `<p class="action-progress">📊 ${a.progress}</p>` : ''}
+                <p class="action-source">📄 ${a.source}</p>
               </div>
             `).join('')}
           </div>
@@ -799,7 +823,7 @@ async function showWorkspaceContent(workspace, workspaceId) {
         <!-- BLOCKERS -->
         ${blockers.length > 0 ? `
         <div class="action-section">
-          <h3>🚧 Blockers & Waiting</h3>
+          <h3>🚧 Blockers</h3>
           <div class="action-list">
             ${blockers.map(b => `
               <div class="action-card blocker">
@@ -814,20 +838,11 @@ async function showWorkspaceContent(workspace, workspaceId) {
         </div>
         ` : ''}
         
-        <!-- COMPLETED TASKS -->
-        <div class="activity-section">
-          <h3>✅ Recently Completed</h3>
-          <div class="activity-list">
-            ${completed.slice(0, 10).map(task => `
-              <div class="activity-item">
-                <div class="activity-header">
-                  <span class="activity-title">${task.task}</span>
-                  <span class="activity-duration">${task.duration || ''}</span>
-                </div>
-                <p class="activity-details">${task.details || ''}</p>
-                <span class="activity-time">${formatTime(task.completedAt)}</span>
-              </div>
-            `).join('')}
+        <!-- TIMELINE -->
+        <div class="timeline-section">
+          <h3>📜 Recently Completed</h3>
+          <div class="timeline">
+            ${timelineHtml || '<p class="empty">No completions yet</p>'}
           </div>
         </div>
       </section>
@@ -904,6 +919,86 @@ document.addEventListener('click', (e) => {
     document.querySelector('.workspace-selector')?.classList.remove('open');
   }
 });
+
+// Complete an item from Gabriel's queue
+async function completeItem(id) {
+  const card = document.querySelector(`[data-id="${id}"]`);
+  if (card) {
+    card.classList.add('completing');
+    card.innerHTML = '<div class="completing-msg">✅ Marking complete...</div>';
+  }
+  
+  // Store in localStorage for now (Telegram bot will sync)
+  const completed = JSON.parse(localStorage.getItem('command_center_completed') || '[]');
+  completed.push({
+    id,
+    completedAt: new Date().toISOString()
+  });
+  localStorage.setItem('command_center_completed', JSON.stringify(completed));
+  
+  // Reload after brief delay
+  setTimeout(() => {
+    showWorkspaceContent(workspaces.robin, 'robin');
+    showToast(`Completed ${id}!`);
+  }, 500);
+}
+
+// Generate today's schedule
+function generateSchedule() {
+  const modal = document.createElement('div');
+  modal.className = 'doc-modal';
+  modal.innerHTML = `
+    <div class="doc-modal-content">
+      <button class="doc-modal-close" onclick="this.parentElement.parentElement.remove()">✕</button>
+      <div class="doc-modal-body">
+        <h2>📅 Today's Schedule</h2>
+        <p style="color: var(--text-muted);">Based on your queue and priorities</p>
+        
+        <div class="schedule-block">
+          <h3>🌅 Morning (9am - 12pm)</h3>
+          <div class="schedule-item">
+            <span class="schedule-time">9:00</span>
+            <span class="schedule-task"><strong>g1:</strong> Publish Military Discount Page (15 min)</span>
+          </div>
+          <div class="schedule-item">
+            <span class="schedule-time">9:30</span>
+            <span class="schedule-task"><strong>g2:</strong> Review Group Buys Program (20 min)</span>
+          </div>
+          <div class="schedule-item">
+            <span class="schedule-time">10:00</span>
+            <span class="schedule-task"><strong>g3:</strong> Review FC landing page (10 min)</span>
+          </div>
+        </div>
+        
+        <div class="schedule-block">
+          <h3>☀️ Afternoon (1pm - 5pm)</h3>
+          <div class="schedule-item">
+            <span class="schedule-time">1:00</span>
+            <span class="schedule-task">Quick decisions: g4 + g5 (10 min total)</span>
+          </div>
+          <div class="schedule-item">
+            <span class="schedule-time">1:30</span>
+            <span class="schedule-task"><strong>g6:</strong> Connect Chrome relay (2 min) - unlocks Phase 2!</span>
+          </div>
+          <div class="schedule-item robin-task">
+            <span class="schedule-time">2:00+</span>
+            <span class="schedule-task">🦅 Robin handles r2-r7 while you focus on core work</span>
+          </div>
+        </div>
+        
+        <div class="schedule-summary">
+          <strong>Your time needed:</strong> ~1 hour<br>
+          <strong>Robin handles:</strong> 6 background tasks<br>
+          <strong>Unblocks:</strong> Content velocity, browser automation, FC launch
+        </div>
+        
+        <button class="btn btn-primary" onclick="this.closest('.doc-modal').remove()" style="margin-top: 16px;">Got it!</button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(modal);
+  modal.addEventListener('click', (e) => { if (e.target === modal) modal.remove(); });
+}
 
 // Utilities
 function escapeHtml(text) {
