@@ -1,6 +1,6 @@
 {
   "status": "available",
   "task": "Standing by",
-  "updatedAt": "2026-01-31T21:21:51.012Z",
-  "details": "Ready for tasks. Status colors updated: blue=available, yellow=working, gray=offline."
+  "updatedAt": "2026-01-31T21:23:24.598Z",
+  "details": "Fixed! Should show blue 'Available' badge now."
 }
