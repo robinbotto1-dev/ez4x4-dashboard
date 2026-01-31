@@ -1,6 +1,6 @@
 {
-  "status": "working",
-  "task": "Fixing sidebar per workspace",
-  "updatedAt": "2026-01-31T21:43:42.278Z",
-  "details": "Making sidebar nav contextual - different items for each workspace."
+  "status": "available",
+  "task": "Contextual sidebar done",
+  "updatedAt": "2026-01-31T21:44:36.767Z",
+  "details": "Sidebar now shows different nav items per workspace. Robin has Dashboard + Full History. EZ4X4 has all the forum stuff."
 }
