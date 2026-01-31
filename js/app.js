@@ -15,21 +15,32 @@ const workspaces = {
     name: 'EZ4X4',
     type: 'Forum & Marketing Intel',
     dataPath: 'data',
-    sections: ['engagement', 'intel', 'threads', 'docs', 'strategy']
+    navItems: [
+      { id: 'engagement', icon: '💬', label: 'Forum Engagement' },
+      { id: 'intel', icon: '📊', label: 'Daily Intel' },
+      { id: 'threads', icon: '📝', label: 'Thread Ideas' },
+      { id: 'docs', icon: '📁', label: 'Documents' },
+      { id: 'strategy', icon: '🎯', label: 'Strategy' }
+    ]
   },
   founderchat: {
     icon: '💬',
     name: 'Founder Chat',
     type: 'Community & Alerts',
     dataPath: 'data/founderchat',
-    sections: ['alerts', 'members', 'content', 'metrics']
+    navItems: [
+      { id: 'fc-docs', icon: '📁', label: 'Documents' }
+    ]
   },
   robin: {
     icon: '🦅',
     name: 'Robin',
     type: 'General Assistant',
     dataPath: 'data/robin',
-    sections: ['tasks', 'notes', 'calendar', 'integrations']
+    navItems: [
+      { id: 'robin-dashboard', icon: '🏠', label: 'Dashboard' },
+      { id: 'robin-history', icon: '📜', label: 'Full History' }
+    ]
   }
 };
 
@@ -41,6 +52,20 @@ document.addEventListener('DOMContentLoaded', async () => {
   
   // Load default workspace
   const workspace = workspaces[currentWorkspace];
+  
+  // Update sidebar for current workspace
+  updateSidebarNav(workspace, currentWorkspace);
+  
+  // Update header
+  document.getElementById('currentWorkspaceIcon').textContent = workspace.icon;
+  document.getElementById('currentWorkspaceName').textContent = workspace.name;
+  document.querySelector('.workspace-current .workspace-type').textContent = workspace.type;
+  
+  // Update dropdown active state
+  document.querySelectorAll('.workspace-option').forEach(opt => {
+    opt.classList.toggle('active', opt.dataset.workspace === currentWorkspace);
+  });
+  
   if (currentWorkspace === 'robin' || currentWorkspace === 'founderchat') {
     showWorkspaceContent(workspace, currentWorkspace);
   } else {
@@ -594,11 +619,48 @@ function switchWorkspace(workspaceId, event) {
   // Close dropdown
   document.querySelector('.workspace-selector').classList.remove('open');
   
+  // Update sidebar nav
+  updateSidebarNav(workspace, workspaceId);
+  
   // Load workspace content
   if (workspaceId === 'ez4x4') {
     hideWorkspaceComingSoon();
   } else {
     showWorkspaceContent(workspace, workspaceId);
+  }
+}
+
+function updateSidebarNav(workspace, workspaceId) {
+  const navLinks = document.querySelector('.nav-links');
+  if (!navLinks || !workspace.navItems) return;
+  
+  navLinks.innerHTML = workspace.navItems.map((item, i) => `
+    <li>
+      <a href="#${item.id}" class="${i === 0 ? 'active' : ''}" data-section="${item.id}" onclick="handleNavClick('${item.id}', '${workspaceId}', event)">
+        ${item.icon} ${item.label}
+      </a>
+    </li>
+  `).join('');
+}
+
+function handleNavClick(sectionId, workspaceId, event) {
+  event.preventDefault();
+  
+  // Update active state
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  event.target.classList.add('active');
+  
+  if (workspaceId === 'ez4x4') {
+    // Show the corresponding section
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    const section = document.getElementById(sectionId);
+    if (section) section.classList.add('active');
+  } else if (workspaceId === 'robin') {
+    if (sectionId === 'robin-history') {
+      showRobinHistory();
+    } else {
+      showWorkspaceContent(workspaces.robin, 'robin');
+    }
   }
 }
 
@@ -796,6 +858,44 @@ async function openFCDoc(filename) {
 
 function hideWorkspaceComingSoon() {
   location.reload();
+}
+
+async function showRobinHistory() {
+  const content = document.querySelector('.content');
+  
+  let activity = { completed: [] };
+  try {
+    const res = await fetch('data/robin/activity.json?t=' + Date.now());
+    if (res.ok) activity = await res.json();
+  } catch (e) {}
+  
+  const completed = activity.completed || [];
+  
+  const formatTime = (iso) => {
+    const d = new Date(iso);
+    return d.toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
+  };
+  
+  content.innerHTML = `
+    <section class="section active">
+      <header class="section-header">
+        <h2>📜 Full Task History</h2>
+        <p>Everything we've done together</p>
+      </header>
+      <div class="activity-list">
+        ${completed.map(task => `
+          <div class="activity-item">
+            <div class="activity-header">
+              <span class="activity-title">${task.task}</span>
+              <span class="activity-duration">${task.duration || ''}</span>
+            </div>
+            <p class="activity-details">${task.details || ''}</p>
+            <span class="activity-time">${formatTime(task.completedAt)}</span>
+          </div>
+        `).join('')}
+      </div>
+    </section>
+  `;
 }
 
 // Close dropdown when clicking outside
