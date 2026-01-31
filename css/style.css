@@ -531,7 +531,8 @@ body {
 }
 
 .status-widget.offline .status-indicator {
-  background: var(--text-muted);
+  background: #ef4444;
+  box-shadow: 0 0 8px #ef4444;
 }
 
 @keyframes pulse {
