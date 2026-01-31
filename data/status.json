@@ -1,6 +1,6 @@
 {
-  "status": "available",
-  "task": "Ready",
-  "updatedAt": "2026-01-31T22:44:47.443Z",
-  "details": "Added link icons, fixed caching"
+  "status": "working",
+  "task": "Fixing task links",
+  "updatedAt": "2026-01-31T22:59:08.067Z",
+  "details": "Linking to actual docs and useful pages"
 }
