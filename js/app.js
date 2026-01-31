@@ -734,21 +734,17 @@ async function showWorkspaceContent(workspace, workspaceId) {
     const blockers = actions.blockers || [];
     const health = actions.businessHealth || {};
     
-    // Generate timeline HTML
-    const timelineDates = Object.keys(timeline).sort().reverse().slice(0, 5);
+    // Generate compact timeline HTML
+    const timelineDates = Object.keys(timeline).sort().reverse().slice(0, 3);
     const timelineHtml = timelineDates.map(date => {
-      const items = timeline[date] || [];
+      const items = (timeline[date] || []).slice(0, 5); // Max 5 per day
       const dateLabel = new Date(date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
       return `
-        <div class="timeline-day">
-          <div class="timeline-date">${dateLabel}</div>
-          <div class="timeline-items">
-            ${items.length === 0 ? '<div class="timeline-empty">No completions</div>' : items.map(item => `
-              <div class="timeline-item">
-                <span class="timeline-time">${item.time}</span>
-                <span class="timeline-task">✓ ${item.task}</span>
-                <span class="timeline-duration">${item.duration}</span>
-              </div>
+        <div class="tl-day">
+          <span class="tl-date">${dateLabel}</span>
+          <div class="tl-items">
+            ${items.length === 0 ? '<span class="tl-empty">-</span>' : items.map(item => `
+              <span class="tl-item">✓ ${item.task} <small>(${item.duration})</small></span>
             `).join('')}
           </div>
         </div>
@@ -784,37 +780,44 @@ async function showWorkspaceContent(workspace, workspaceId) {
         </div>
         
         <!-- GABRIEL'S QUEUE -->
-        <div class="action-section priority">
-          <h3>👤 Your Queue (Needs You)</h3>
-          <div class="action-list">
+        <div class="queue-section">
+          <h3>👤 Your Queue</h3>
+          <div class="queue-table">
+            <div class="queue-header">
+              <span class="q-id">ID</span>
+              <span class="q-task">Task</span>
+              <span class="q-impact">Impact</span>
+              <span class="q-time">Time</span>
+              <span class="q-action"></span>
+            </div>
             ${gabrielQueue.filter(a => !a.completed).map(a => `
-              <div class="action-card gabriel" data-id="${a.id}">
-                <div class="action-header">
-                  <span class="action-id">${a.id}</span>
-                  <span class="action-title">${a.title}</span>
-                  <span class="action-effort">${a.effort}</span>
-                </div>
-                <p class="action-impact">💥 ${a.impact}</p>
-                <p class="action-source">📄 ${a.source}</p>
-                <button class="btn btn-success" onclick="completeItem('${a.id}')">✅ Complete</button>
+              <div class="queue-row" data-id="${a.id}">
+                <span class="q-id">${a.id}</span>
+                <span class="q-task">${a.title}</span>
+                <span class="q-impact">${a.impact.replace('Quick win - ', '').replace('Unblocks ', '→ ')}</span>
+                <span class="q-time">${a.effort}</span>
+                <button class="q-btn" onclick="completeItem('${a.id}')">✓</button>
               </div>
             `).join('')}
           </div>
         </div>
         
         <!-- ROBIN'S QUEUE -->
-        <div class="action-section">
-          <h3>🦅 Robin's Queue (I'll Handle)</h3>
-          <div class="action-list">
+        <div class="queue-section">
+          <h3>🦅 Robin's Queue</h3>
+          <div class="queue-table">
+            <div class="queue-header">
+              <span class="q-id">ID</span>
+              <span class="q-task">Task</span>
+              <span class="q-status">Status</span>
+              <span class="q-progress">Progress</span>
+            </div>
             ${robinQueue.map(a => `
-              <div class="action-card robin ${a.status === 'in_progress' ? 'in-progress' : ''}">
-                <div class="action-header">
-                  <span class="action-id">${a.id}</span>
-                  <span class="action-title">${a.title}</span>
-                  ${a.status === 'in_progress' ? '<span class="status-badge working">In Progress</span>' : '<span class="status-badge">Queued</span>'}
-                </div>
-                ${a.progress ? `<p class="action-progress">📊 ${a.progress}</p>` : ''}
-                <p class="action-source">📄 ${a.source}</p>
+              <div class="queue-row ${a.status === 'in_progress' ? 'active' : ''}">
+                <span class="q-id">${a.id}</span>
+                <span class="q-task">${a.title}</span>
+                <span class="q-status">${a.status === 'in_progress' ? '🔄' : '⏳'}</span>
+                <span class="q-progress">${a.progress || '-'}</span>
               </div>
             `).join('')}
           </div>
@@ -822,16 +825,13 @@ async function showWorkspaceContent(workspace, workspaceId) {
         
         <!-- BLOCKERS -->
         ${blockers.length > 0 ? `
-        <div class="action-section">
+        <div class="blockers-section">
           <h3>🚧 Blockers</h3>
-          <div class="action-list">
+          <div class="blockers-list">
             ${blockers.map(b => `
-              <div class="action-card blocker">
-                <div class="action-header">
-                  <span class="action-title">${b.title}</span>
-                  <span class="blocker-status">${b.status}</span>
-                </div>
-                <p class="action-desc">${b.note}</p>
+              <div class="blocker-row">
+                <span class="blocker-title">${b.title}</span>
+                <span class="blocker-status">${b.status}</span>
               </div>
             `).join('')}
           </div>
@@ -839,11 +839,9 @@ async function showWorkspaceContent(workspace, workspaceId) {
         ` : ''}
         
         <!-- TIMELINE -->
-        <div class="timeline-section">
-          <h3>📜 Recently Completed</h3>
-          <div class="timeline">
-            ${timelineHtml || '<p class="empty">No completions yet</p>'}
-          </div>
+        <div class="tl-section">
+          <h3>📜 Recent</h3>
+          <div class="tl-grid">${timelineHtml || '<p class="empty">No completions yet</p>'}</div>
         </div>
       </section>
     `;
