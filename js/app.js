@@ -468,9 +468,19 @@ function updateStatusWidget(data) {
   widget.classList.add(status);
   if (isExpanded) widget.classList.add('expanded');
   
+  const badgeEl = widget.querySelector('.status-badge');
   const taskEl = widget.querySelector('.status-task');
   const timeEl = widget.querySelector('.status-time');
   const detailsEl = widget.querySelector('.status-details-text');
+  
+  // Set badge text
+  const badgeLabels = {
+    online: 'Online',
+    working: 'Working',
+    idle: 'Idle',
+    offline: 'Offline'
+  };
+  badgeEl.textContent = badgeLabels[status] || 'Unknown';
   
   taskEl.textContent = data.task || 'Idle';
   

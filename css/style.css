@@ -506,33 +506,37 @@ body {
   gap: 12px;
 }
 
-.status-indicator {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--text-muted);
+.status-badge {
+  font-size: 10px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
   flex-shrink: 0;
+  background: var(--bg-hover);
+  color: var(--text-muted);
 }
 
-.status-widget.online .status-indicator {
-  background: var(--success);
-  box-shadow: 0 0 8px var(--success);
+.status-widget.online .status-badge {
+  background: #dcfce7;
+  color: #16a34a;
 }
 
-.status-widget.working .status-indicator {
-  background: var(--warning);
-  box-shadow: 0 0 8px var(--warning);
+.status-widget.working .status-badge {
+  background: #fef3c7;
+  color: #d97706;
   animation: pulse 1s infinite;
 }
 
-.status-widget.idle .status-indicator {
-  background: #60a5fa;
-  box-shadow: 0 0 8px #60a5fa;
+.status-widget.idle .status-badge {
+  background: #dbeafe;
+  color: #2563eb;
 }
 
-.status-widget.offline .status-indicator {
-  background: #ef4444;
-  box-shadow: 0 0 8px #ef4444;
+.status-widget.offline .status-badge {
+  background: #fee2e2;
+  color: #dc2626;
 }
 
 @keyframes pulse {
