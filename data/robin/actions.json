@@ -1,11 +1,12 @@
 {
-  "updatedAt": "2026-01-31T22:34:00.000Z",
+  "updatedAt": "2026-01-31T22:58:00.000Z",
   "gabrielQueue": [
     {
       "id": "g1",
       "title": "Publish Military Discount Page",
       "source": "PROJECT-TRACKER.md",
-      "link": "https://github.com/robinbotto1-dev/ez4x4-dashboard/blob/main/data/docs/products/military-discount-page.md",
+      "link": "#",
+      "linkAction": "openDoc('products/military-discount-page.md')",
       "impact": "Drives conversions",
       "effort": "15 min",
       "completed": false
@@ -14,7 +15,8 @@
       "id": "g2",
       "title": "Review Group Buys Program draft",
       "source": "PROJECT-TRACKER.md",
-      "link": "https://github.com/robinbotto1-dev/ez4x4-dashboard/blob/main/data/docs/products/group-buys-page.md",
+      "link": "#",
+      "linkAction": "openDoc('products/group-buys-page.md')",
       "impact": "New revenue channel",
       "effort": "20 min",
       "completed": false
@@ -32,7 +34,8 @@
       "id": "g4",
       "title": "Decide: Forum accounts - fresh or existing?",
       "source": "MARKETING-PLAN.md",
-      "link": "https://github.com/robinbotto1-dev/ez4x4-dashboard/blob/main/data/docs/forum-strategy.md",
+      "link": "#",
+      "linkAction": "openDoc('forum-strategy.md')",
       "impact": "Unblocks forum work",
       "effort": "5 min",
       "completed": false
@@ -59,7 +62,7 @@
       "id": "g7",
       "title": "Get Shopify API token from Brian",
       "source": "DASHBOARD",
-      "link": "https://ez4x4.myshopify.com/admin/settings/apps/development",
+      "link": "https://admin.shopify.com/store/ez4x4/settings/apps/development",
       "impact": "Unlocks revenue data",
       "effort": "2 min",
       "completed": false,
@@ -135,7 +138,7 @@
     {
       "id": "b2",
       "title": "Thai competitor fake accounts",
-      "status": "Reported to Jay",
+      "status": "Reported",
       "note": "Jay will delete once EZ4X4 is officially a sponsor",
       "category": "ez4x4"
     },
