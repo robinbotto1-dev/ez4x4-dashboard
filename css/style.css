@@ -775,6 +775,12 @@ body {
   text-overflow: ellipsis;
 }
 
+.status-widget.expanded .status-task {
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+}
+
 .status-time {
   font-size: 11px;
   color: var(--text-muted);
