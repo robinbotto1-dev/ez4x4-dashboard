@@ -494,9 +494,8 @@ function updateStatusWidget(data) {
   
   // Set badge text
   const badgeLabels = {
-    online: 'Online',
+    available: 'Available',
     working: 'Working',
-    idle: 'Idle',
     offline: 'Offline'
   };
   badgeEl.textContent = badgeLabels[status] || 'Unknown';
@@ -510,9 +509,8 @@ function updateStatusWidget(data) {
     // Default details based on status
     const defaults = {
       working: 'Currently focused on this task. Will update when complete.',
-      online: 'Available and monitoring. Ready to help when needed.',
-      idle: 'Waiting for new tasks or messages. Check back soon!',
-      offline: 'Currently offline. Will resume when back online.'
+      available: 'Ready and monitoring. Standing by for tasks.',
+      offline: 'System offline. Will resume when back online.'
     };
     detailsEl.textContent = defaults[data.status] || 'No additional details.';
   }
