@@ -9,6 +9,7 @@ let completedItems = JSON.parse(localStorage.getItem('ez4x4_completed') || '{}')
 
 // Initialize
 document.addEventListener('DOMContentLoaded', async () => {
+  loadStatus(); // Load status even before auth
   if (!checkAuth()) return;
   setupNavigation();
   await loadData();
@@ -440,6 +441,50 @@ function simpleMarkdown(text) {
       return match;
     });
 }
+
+// Status Widget
+async function loadStatus() {
+  try {
+    const res = await fetch('data/status.json?t=' + Date.now());
+    if (res.ok) {
+      const data = await res.json();
+      updateStatusWidget(data);
+    }
+  } catch (e) {
+    console.log('Could not load status');
+  }
+}
+
+function updateStatusWidget(data) {
+  const widget = document.getElementById('statusWidget');
+  if (!widget) return;
+  
+  widget.className = 'status-widget ' + (data.status || 'offline');
+  
+  const taskEl = widget.querySelector('.status-task');
+  const timeEl = widget.querySelector('.status-time');
+  
+  taskEl.textContent = data.task || 'Idle';
+  
+  if (data.updatedAt) {
+    const updated = new Date(data.updatedAt);
+    const now = new Date();
+    const diffMin = Math.floor((now - updated) / 60000);
+    
+    if (diffMin < 1) {
+      timeEl.textContent = 'just now';
+    } else if (diffMin < 60) {
+      timeEl.textContent = `${diffMin}m ago`;
+    } else if (diffMin < 1440) {
+      timeEl.textContent = `${Math.floor(diffMin/60)}h ago`;
+    } else {
+      timeEl.textContent = updated.toLocaleDateString();
+    }
+  }
+}
+
+// Poll status every 30 seconds
+setInterval(loadStatus, 30000);
 
 // Utilities
 function escapeHtml(text) {
