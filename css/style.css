@@ -39,7 +39,7 @@ body {
 .sidebar {
   width: 240px;
   background: var(--bg-white);
-  padding: 24px 16px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
   border-right: 1px solid var(--border);
@@ -47,17 +47,99 @@ body {
   height: 100vh;
 }
 
-.logo h1 {
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 2px;
+/* Workspace Selector */
+.workspace-selector {
+  position: relative;
+  margin-bottom: 8px;
 }
 
-.logo .subtitle {
+.workspace-current {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.workspace-current:hover {
+  border-color: var(--accent);
+}
+
+.workspace-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.workspace-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.workspace-name {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.workspace-type {
+  display: block;
+  font-size: 11px;
   color: var(--text-muted);
-  font-size: 12px;
-  font-weight: 500;
+}
+
+.workspace-arrow {
+  font-size: 10px;
+  color: var(--text-muted);
+  transition: transform 0.2s;
+}
+
+.workspace-selector.open .workspace-arrow {
+  transform: rotate(180deg);
+}
+
+.workspace-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-top: 4px;
+  box-shadow: var(--shadow-lg);
+  z-index: 50;
+  overflow: hidden;
+}
+
+.workspace-selector.open .workspace-dropdown {
+  display: block;
+}
+
+.workspace-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.workspace-option:hover {
+  background: var(--bg-hover);
+}
+
+.workspace-option.active {
+  background: var(--accent-bg);
+}
+
+.workspace-option.active .workspace-name {
+  color: var(--accent);
 }
 
 .nav-links {
@@ -456,6 +538,43 @@ body {
 
 .empty-state p {
   margin-bottom: 8px;
+}
+
+/* Coming Soon */
+.coming-soon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 80px 24px;
+  min-height: 60vh;
+}
+
+.coming-soon-icon {
+  font-size: 64px;
+  margin-bottom: 24px;
+}
+
+.coming-soon h2 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text-primary);
+}
+
+.coming-soon p {
+  color: var(--text-secondary);
+  font-size: 15px;
+}
+
+.coming-soon-hint {
+  margin-top: 24px;
+  padding: 12px 20px;
+  background: var(--accent-bg);
+  color: var(--accent);
+  border-radius: var(--radius);
+  font-size: 13px;
 }
 
 /* Toast Notification */

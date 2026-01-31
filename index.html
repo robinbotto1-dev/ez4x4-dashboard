@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EZ4X4 Command Center</title>
-  <link rel="stylesheet" href="css/style.css?v=4">
+  <title>Command Center</title>
+  <link rel="stylesheet" href="css/style.css?v=5">
 </head>
 <body>
   <!-- Status Widget -->
@@ -24,9 +24,38 @@
     </div>
   </div>
   <nav class="sidebar">
-    <div class="logo">
-      <h1>🚙 EZ4X4</h1>
-      <span class="subtitle">Command Center</span>
+    <div class="workspace-selector" onclick="toggleWorkspaceDropdown()">
+      <div class="workspace-current">
+        <span class="workspace-icon" id="currentWorkspaceIcon">🚙</span>
+        <div class="workspace-info">
+          <span class="workspace-name" id="currentWorkspaceName">EZ4X4</span>
+          <span class="workspace-type">Command Center</span>
+        </div>
+        <span class="workspace-arrow">▼</span>
+      </div>
+      <div class="workspace-dropdown" id="workspaceDropdown">
+        <div class="workspace-option active" data-workspace="ez4x4" onclick="switchWorkspace('ez4x4', event)">
+          <span class="workspace-icon">🚙</span>
+          <div class="workspace-info">
+            <span class="workspace-name">EZ4X4</span>
+            <span class="workspace-type">Forum & Marketing Intel</span>
+          </div>
+        </div>
+        <div class="workspace-option" data-workspace="founderchat" onclick="switchWorkspace('founderchat', event)">
+          <span class="workspace-icon">💬</span>
+          <div class="workspace-info">
+            <span class="workspace-name">Founder Chat</span>
+            <span class="workspace-type">Community & Alerts</span>
+          </div>
+        </div>
+        <div class="workspace-option" data-workspace="robin" onclick="switchWorkspace('robin', event)">
+          <span class="workspace-icon">🦅</span>
+          <div class="workspace-info">
+            <span class="workspace-name">Robin</span>
+            <span class="workspace-type">General Assistant</span>
+          </div>
+        </div>
+      </div>
     </div>
     <ul class="nav-links">
       <li><a href="#engagement" class="active" data-section="engagement">💬 Forum Engagement</a></li>
@@ -118,6 +147,6 @@
     </section>
   </main>
 
-  <script src="js/app.js?v=4"></script>
+  <script src="js/app.js?v=5"></script>
 </body>
 </html>

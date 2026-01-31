@@ -1,11 +1,37 @@
-// EZ4X4 Command Center - Main App
+// Command Center - Main App
 
 // State
+let currentWorkspace = localStorage.getItem('currentWorkspace') || 'ez4x4';
 let engagementData = [];
 let intelData = [];
 let threadData = [];
 let docsData = [];
 let completedItems = JSON.parse(localStorage.getItem('ez4x4_completed') || '{}');
+
+// Workspace configs
+const workspaces = {
+  ez4x4: {
+    icon: '🚙',
+    name: 'EZ4X4',
+    type: 'Forum & Marketing Intel',
+    dataPath: 'data',
+    sections: ['engagement', 'intel', 'threads', 'docs', 'strategy']
+  },
+  founderchat: {
+    icon: '💬',
+    name: 'Founder Chat',
+    type: 'Community & Alerts',
+    dataPath: 'data/founderchat',
+    sections: ['alerts', 'members', 'content', 'metrics']
+  },
+  robin: {
+    icon: '🦅',
+    name: 'Robin',
+    type: 'General Assistant',
+    dataPath: 'data/robin',
+    sections: ['tasks', 'notes', 'calendar', 'integrations']
+  }
+};
 
 // Initialize
 document.addEventListener('DOMContentLoaded', async () => {
@@ -539,6 +565,68 @@ async function refreshStatus(event) {
 
 // Poll status every 30 seconds
 setInterval(loadStatus, 30000);
+
+// Workspace functions
+function toggleWorkspaceDropdown() {
+  const selector = document.querySelector('.workspace-selector');
+  selector.classList.toggle('open');
+}
+
+function switchWorkspace(workspaceId, event) {
+  if (event) event.stopPropagation();
+  
+  const workspace = workspaces[workspaceId];
+  if (!workspace) return;
+  
+  currentWorkspace = workspaceId;
+  localStorage.setItem('currentWorkspace', workspaceId);
+  
+  // Update UI
+  document.getElementById('currentWorkspaceIcon').textContent = workspace.icon;
+  document.getElementById('currentWorkspaceName').textContent = workspace.name;
+  document.querySelector('.workspace-current .workspace-type').textContent = workspace.type;
+  
+  // Update active state
+  document.querySelectorAll('.workspace-option').forEach(opt => {
+    opt.classList.toggle('active', opt.dataset.workspace === workspaceId);
+  });
+  
+  // Close dropdown
+  document.querySelector('.workspace-selector').classList.remove('open');
+  
+  // Show coming soon for non-EZ4X4 workspaces (for now)
+  if (workspaceId !== 'ez4x4') {
+    showWorkspaceComingSoon(workspace);
+  } else {
+    hideWorkspaceComingSoon();
+    loadData();
+    renderAll();
+  }
+}
+
+function showWorkspaceComingSoon(workspace) {
+  const content = document.querySelector('.content');
+  content.innerHTML = `
+    <div class="coming-soon">
+      <span class="coming-soon-icon">${workspace.icon}</span>
+      <h2>${workspace.name} Dashboard</h2>
+      <p>Coming soon! This workspace is being set up.</p>
+      <p class="coming-soon-hint">Robin will build this out based on your needs.</p>
+    </div>
+  `;
+}
+
+function hideWorkspaceComingSoon() {
+  // Reload the page to restore original content
+  location.reload();
+}
+
+// Close dropdown when clicking outside
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.workspace-selector')) {
+    document.querySelector('.workspace-selector')?.classList.remove('open');
+  }
+});
 
 // Utilities
 function escapeHtml(text) {
