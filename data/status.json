@@ -1,6 +1,6 @@
 {
-  "status": "available",
-  "task": "Ready",
-  "updatedAt": "2026-01-31T22:11:14.857Z",
-  "details": "Added Shopify reminder for Monday, updated dash with g7 task"
+  "status": "working",
+  "task": "Adding history + undo for completed items",
+  "updatedAt": "2026-01-31T22:11:50.207Z",
+  "details": "Queue items and blockers go to history with undo"
 }
