@@ -644,13 +644,61 @@ async function showWorkspaceContent(workspace, workspaceId) {
       </section>
     `;
   } else if (workspaceId === 'robin') {
+    // Load Robin activity data
+    let activity = { completed: [], stats: {} };
+    try {
+      const res = await fetch('data/robin/activity.json?t=' + Date.now());
+      if (res.ok) activity = await res.json();
+    } catch (e) {
+      console.log('Could not load Robin activity');
+    }
+    
+    const stats = activity.stats || {};
+    const completed = activity.completed || [];
+    
+    const formatTime = (iso) => {
+      const d = new Date(iso);
+      return d.toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
+    };
+    
     content.innerHTML = `
-      <div class="coming-soon">
-        <span class="coming-soon-icon">${workspace.icon}</span>
-        <h2>${workspace.name} Dashboard</h2>
-        <p>Coming soon! This workspace is being set up.</p>
-        <p class="coming-soon-hint">Will include tasks, notes, calendar, and integrations.</p>
-      </div>
+      <section class="section active">
+        <header class="section-header">
+          <h2>🦅 Robin Activity Dashboard</h2>
+          <p>Everything I'm working on and have completed</p>
+        </header>
+        
+        <div class="stats-grid">
+          <div class="stat-card">
+            <span class="stat-value">${stats.totalTasks || 0}</span>
+            <span class="stat-label">Total Tasks</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value">${stats.tasksToday || 0}</span>
+            <span class="stat-label">Tasks Today</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-value">${stats.docsCreated || 0}</span>
+            <span class="stat-label">Docs Created</span>
+          </div>
+        </div>
+        
+        <div class="activity-section">
+          <h3>✅ Completed Tasks</h3>
+          <div class="activity-list">
+            ${completed.map(task => `
+              <div class="activity-item">
+                <div class="activity-header">
+                  <span class="activity-title">${task.task}</span>
+                  <span class="activity-duration">${task.duration || ''}</span>
+                </div>
+                <p class="activity-details">${task.details || ''}</p>
+                <span class="activity-time">${formatTime(task.completedAt)}</span>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </section>
     `;
   }
 }
