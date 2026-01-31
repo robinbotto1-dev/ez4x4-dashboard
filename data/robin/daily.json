@@ -1,0 +1,23 @@
+{
+  "updatedAt": "2026-01-31T23:46:00.000Z",
+  "yesterday": {
+    "date": "2026-01-30",
+    "summary": "Built the Command Center dashboard from scratch",
+    "highlights": [
+      "Created EZ4X4 forum engagement system with scrapers",
+      "Built workspace switcher (EZ4X4, Founder Chat, Robin)",
+      "Added 50 docs to the dashboard",
+      "Set up status widget with live updates"
+    ]
+  },
+  "today": {
+    "date": "2026-01-31",
+    "focus": "Dashboard polish + workflow setup",
+    "priorities": [
+      "Get Shopify API token from Brian (Monday)",
+      "Review Military Discount Page",
+      "Review Group Buys Program draft",
+      "Connect Chrome relay for Phase 2"
+    ]
+  }
+}

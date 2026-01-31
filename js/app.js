@@ -716,10 +716,16 @@ async function showWorkspaceContent(workspace, workspaceId) {
     // Load Robin data
     let activity = { timeline: {}, stats: {} };
     let actions = { gabrielQueue: [], robinQueue: [], blockers: [], businessHealth: {}, completedHistory: [] };
+    let daily = { yesterday: {}, today: {} };
     
     try {
       const res = await fetch('data/robin/activity.json?t=' + Date.now());
       if (res.ok) activity = await res.json();
+    } catch (e) {}
+    
+    try {
+      const res = await fetch('data/robin/daily.json?t=' + Date.now());
+      if (res.ok) daily = await res.json();
     } catch (e) {}
     
     // Always fetch fresh data from server, merge with localStorage completed items
@@ -750,6 +756,8 @@ async function showWorkspaceContent(workspace, workspaceId) {
     const blockers = actions.blockers || [];
     const health = actions.businessHealth || {};
     const completedHistory = actions.completedHistory || [];
+    const yesterday = daily.yesterday || {};
+    const today = daily.today || {};
     
     // Generate compact timeline HTML
     const timelineDates = Object.keys(timeline).sort().reverse().slice(0, 3);
@@ -775,6 +783,34 @@ async function showWorkspaceContent(workspace, workspaceId) {
           <p>High-return actions for both of us</p>
           <button class="btn btn-primary" onclick="generateSchedule()" style="margin-top: 12px;">📅 Generate Today's Schedule</button>
         </header>
+        
+        <!-- DAILY BRIEFING -->
+        <div class="daily-grid">
+          <div class="daily-card yesterday">
+            <div class="daily-header">
+              <span class="daily-icon">📋</span>
+              <span class="daily-title">Yesterday</span>
+            </div>
+            <p class="daily-summary">${yesterday.summary || 'No recap available'}</p>
+            ${yesterday.highlights ? `
+              <ul class="daily-list">
+                ${yesterday.highlights.map(h => `<li>${h}</li>`).join('')}
+              </ul>
+            ` : ''}
+          </div>
+          <div class="daily-card today">
+            <div class="daily-header">
+              <span class="daily-icon">🎯</span>
+              <span class="daily-title">Today's Focus</span>
+            </div>
+            <p class="daily-summary">${today.focus || 'No focus set'}</p>
+            ${today.priorities ? `
+              <ul class="daily-list">
+                ${today.priorities.map(p => `<li>${p}</li>`).join('')}
+              </ul>
+            ` : ''}
+          </div>
+        </div>
         
         <!-- BUSINESS HEALTH -->
         <div class="health-grid">

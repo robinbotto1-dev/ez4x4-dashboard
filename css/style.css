@@ -2079,3 +2079,69 @@ body.locked .status-widget {
     display: none;
   }
 }
+
+/* Daily Briefing Cards */
+.daily-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.daily-card {
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+}
+
+.daily-card.yesterday {
+  border-left: 3px solid var(--text-muted);
+}
+
+.daily-card.today {
+  border-left: 3px solid var(--accent);
+}
+
+.daily-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.daily-icon {
+  font-size: 16px;
+}
+
+.daily-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.daily-summary {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: 10px;
+}
+
+.daily-list {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.daily-list li {
+  margin-bottom: 4px;
+}
+
+@media (max-width: 768px) {
+  .daily-grid {
+    grid-template-columns: 1fr;
+  }
+}
