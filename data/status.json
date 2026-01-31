@@ -1,6 +1,6 @@
 {
-  "status": "working",
-  "task": "Adding history + undo for completed items",
-  "updatedAt": "2026-01-31T22:11:50.207Z",
-  "details": "Queue items and blockers go to history with undo"
+  "status": "available",
+  "task": "Ready",
+  "updatedAt": "2026-01-31T22:13:01.754Z",
+  "details": "Added history section with undo, blocker clear buttons"
 }
