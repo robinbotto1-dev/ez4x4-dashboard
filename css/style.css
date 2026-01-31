@@ -1838,40 +1838,26 @@ body.locked .status-widget {
 }
 
 .history-day-items {
-  position: relative;
-  padding-left: 20px;
-}
-
-.history-day-items::before {
-  content: '';
-  position: absolute;
-  left: 4px;
-  top: 6px;
-  bottom: 6px;
-  width: 2px;
-  background: var(--border);
-  border-radius: 1px;
+  display: flex;
+  flex-direction: column;
 }
 
 .history-day-item {
   display: flex;
   align-items: flex-start;
   gap: 12px;
-  padding: 6px 0;
+  padding: 10px 0;
   font-size: 13px;
-  position: relative;
+  border-bottom: 1px solid var(--border-light);
 }
 
-.history-day-item::before {
-  content: '';
-  position: absolute;
-  left: -20px;
-  top: 10px;
-  width: 10px;
-  height: 10px;
-  background: var(--accent);
-  border-radius: 50%;
-  border: 2px solid var(--bg-white);
+.history-day-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.history-day-item:first-child {
+  padding-top: 0;
 }
 
 .history-day-time {
