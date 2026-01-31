@@ -715,17 +715,25 @@ async function showWorkspaceContent(workspace, workspaceId) {
   } else if (workspaceId === 'robin') {
     // Load Robin data
     let activity = { timeline: {}, stats: {} };
-    let actions = { gabrielQueue: [], robinQueue: [], blockers: [], businessHealth: {} };
+    let actions = { gabrielQueue: [], robinQueue: [], blockers: [], businessHealth: {}, completedHistory: [] };
     
     try {
       const res = await fetch('data/robin/activity.json?t=' + Date.now());
       if (res.ok) activity = await res.json();
     } catch (e) {}
     
-    try {
-      const res = await fetch('data/robin/actions.json?t=' + Date.now());
-      if (res.ok) actions = await res.json();
-    } catch (e) {}
+    // Try localStorage first (has latest state), fallback to server
+    const cached = localStorage.getItem('actions_data');
+    if (cached) {
+      try {
+        actions = JSON.parse(cached);
+      } catch (e) {}
+    } else {
+      try {
+        const res = await fetch('data/robin/actions.json?t=' + Date.now());
+        if (res.ok) actions = await res.json();
+      } catch (e) {}
+    }
     
     const stats = activity.stats || {};
     const timeline = activity.timeline || {};
@@ -733,6 +741,7 @@ async function showWorkspaceContent(workspace, workspaceId) {
     const robinQueue = actions.robinQueue || [];
     const blockers = actions.blockers || [];
     const health = actions.businessHealth || {};
+    const completedHistory = actions.completedHistory || [];
     
     // Generate compact timeline HTML
     const timelineDates = Object.keys(timeline).sort().reverse().slice(0, 3);
@@ -836,9 +845,10 @@ async function showWorkspaceContent(workspace, workspaceId) {
           <h3>🚧 Blockers</h3>
           <div class="blockers-list">
             ${blockers.map(b => `
-              <div class="blocker-row">
+              <div class="blocker-row" data-id="${b.id}">
                 <span class="blocker-title">${b.title}</span>
                 <span class="blocker-status">${b.status}</span>
+                <button class="blocker-clear" onclick="completeItem('${b.id}', 'blocker')">✓</button>
               </div>
             `).join('')}
           </div>
@@ -850,6 +860,29 @@ async function showWorkspaceContent(workspace, workspaceId) {
           <h3>📜 Recent</h3>
           <div class="tl-grid">${timelineHtml || '<p class="empty">No completions yet</p>'}</div>
         </div>
+        
+        <!-- COMPLETED HISTORY -->
+        ${completedHistory.length > 0 ? `
+        <div class="history-section">
+          <div class="history-header">
+            <h3>✅ Completed</h3>
+            <button class="history-clear" onclick="clearHistory()">Clear all</button>
+          </div>
+          <div class="history-list">
+            ${completedHistory.slice(0, 10).map(h => {
+              const time = new Date(h.completedAt).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
+              return `
+                <div class="history-row">
+                  <span class="history-id">${h.id}</span>
+                  <span class="history-title">${h.title}</span>
+                  <span class="history-time">${time}</span>
+                  <button class="history-restore" onclick="restoreItem('${h.id}')">↩</button>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </div>
+        ` : ''}
       </section>
     `;
   }
@@ -925,27 +958,112 @@ document.addEventListener('click', (e) => {
   }
 });
 
-// Complete an item from Gabriel's queue
-async function completeItem(id) {
-  const card = document.querySelector(`[data-id="${id}"]`);
-  if (card) {
-    card.classList.add('completing');
-    card.innerHTML = '<div class="completing-msg">✅ Marking complete...</div>';
+// Complete an item from Gabriel's queue or blockers
+async function completeItem(id, type = 'task') {
+  const row = document.querySelector(`[data-id="${id}"]`);
+  if (row) {
+    row.classList.add('completing');
   }
   
-  // Store in localStorage for now (Telegram bot will sync)
-  const completed = JSON.parse(localStorage.getItem('command_center_completed') || '[]');
-  completed.push({
-    id,
-    completedAt: new Date().toISOString()
-  });
-  localStorage.setItem('command_center_completed', JSON.stringify(completed));
+  // Load current data and move item to history
+  try {
+    const res = await fetch('data/robin/actions.json?t=' + Date.now());
+    const data = await res.json();
+    
+    // Initialize history if needed
+    if (!data.completedHistory) data.completedHistory = [];
+    
+    let item = null;
+    let sourceArray = null;
+    
+    // Find and remove from source
+    if (type === 'blocker') {
+      const idx = data.blockers.findIndex(b => b.id === id);
+      if (idx >= 0) {
+        item = data.blockers.splice(idx, 1)[0];
+        sourceArray = 'blockers';
+      }
+    } else {
+      const idx = data.gabrielQueue.findIndex(t => t.id === id);
+      if (idx >= 0) {
+        item = data.gabrielQueue.splice(idx, 1)[0];
+        sourceArray = 'gabrielQueue';
+      }
+    }
+    
+    if (item) {
+      // Add to history
+      data.completedHistory.unshift({
+        ...item,
+        completedAt: new Date().toISOString(),
+        source: sourceArray
+      });
+      
+      // Keep last 50 items
+      if (data.completedHistory.length > 50) {
+        data.completedHistory = data.completedHistory.slice(0, 50);
+      }
+      
+      data.updatedAt = new Date().toISOString();
+      
+      // Save locally (localStorage as cache, will sync)
+      localStorage.setItem('actions_data', JSON.stringify(data));
+    }
+  } catch (e) {
+    console.error('Error completing item:', e);
+  }
   
   // Reload after brief delay
   setTimeout(() => {
     showWorkspaceContent(workspaces.robin, 'robin');
     showToast(`Completed ${id}!`);
-  }, 500);
+  }, 300);
+}
+
+// Restore an item from history
+async function restoreItem(id) {
+  try {
+    const cached = localStorage.getItem('actions_data');
+    if (!cached) return;
+    
+    const data = JSON.parse(cached);
+    const idx = data.completedHistory.findIndex(h => h.id === id);
+    
+    if (idx >= 0) {
+      const item = data.completedHistory.splice(idx, 1)[0];
+      const source = item.source;
+      delete item.completedAt;
+      delete item.source;
+      
+      if (source === 'blockers') {
+        data.blockers.push(item);
+      } else {
+        data.gabrielQueue.push(item);
+      }
+      
+      localStorage.setItem('actions_data', JSON.stringify(data));
+      showWorkspaceContent(workspaces.robin, 'robin');
+      showToast(`Restored ${id}`);
+    }
+  } catch (e) {
+    console.error('Error restoring item:', e);
+  }
+}
+
+// Clear all history
+function clearHistory() {
+  try {
+    const cached = localStorage.getItem('actions_data');
+    if (cached) {
+      const data = JSON.parse(cached);
+      data.completedHistory = [];
+      localStorage.setItem('actions_data', JSON.stringify(data));
+      showWorkspaceContent(workspaces.robin, 'robin');
+      showToast('History cleared');
+    }
+  } catch (e) {
+    console.error('Error clearing history:', e);
+  }
 }
 
 // Generate today's schedule

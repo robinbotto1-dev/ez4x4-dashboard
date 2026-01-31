@@ -1675,3 +1675,125 @@ body.locked .status-widget {
   color: var(--text-muted);
   margin-bottom: 4px;
 }
+
+/* Blocker clear button */
+.blocker-clear {
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: var(--success);
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.blocker-row:hover .blocker-clear {
+  opacity: 1;
+}
+
+.blocker-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Completed History Section */
+.history-section {
+  margin-top: 24px;
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.history-header h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.history-clear {
+  font-size: 11px;
+  padding: 4px 8px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-muted);
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.history-clear:hover {
+  background: var(--bg-hover);
+}
+
+.history-list {
+  background: var(--bg-white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.history-row {
+  display: grid;
+  grid-template-columns: 50px 1fr 120px 40px;
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border-light);
+  align-items: center;
+  font-size: 13px;
+}
+
+.history-row:last-child {
+  border-bottom: none;
+}
+
+.history-id {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--success);
+  background: #e8f5e9;
+  padding: 2px 6px;
+  border-radius: 4px;
+  width: fit-content;
+  text-decoration: line-through;
+}
+
+.history-title {
+  color: var(--text-muted);
+  text-decoration: line-through;
+}
+
+.history-time {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.history-restore {
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-muted);
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.history-row:hover .history-restore {
+  opacity: 1;
+}
+
+.history-restore:hover {
+  background: var(--accent-bg);
+  color: var(--accent);
+  border-color: var(--accent);
+}
