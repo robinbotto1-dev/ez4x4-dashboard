@@ -1662,3 +1662,16 @@ body.locked .status-widget {
   color: #856404;
   border-radius: 4px;
 }
+
+/* Health card pending state */
+.health-card.pending {
+  border: 1px dashed var(--border);
+  background: var(--bg-primary);
+}
+
+.health-pending {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+}

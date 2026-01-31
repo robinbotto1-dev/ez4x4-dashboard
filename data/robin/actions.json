@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-01-31T21:51:00.000Z",
+  "updatedAt": "2026-01-31T22:10:00.000Z",
   "gabrielQueue": [
     {
       "id": "g1",
@@ -48,6 +48,15 @@
       "impact": "Unlocks browser automation",
       "effort": "2 min",
       "completed": false
+    },
+    {
+      "id": "g7",
+      "title": "Get Shopify API token from Brian",
+      "source": "DASHBOARD",
+      "impact": "Unlocks real revenue data",
+      "effort": "2 min",
+      "completed": false,
+      "due": "Monday"
     }
   ],
   "robinQueue": [
@@ -99,6 +108,13 @@
       "source": "MARKETING-PLAN.md",
       "status": "not_started",
       "progress": null
+    },
+    {
+      "id": "r8",
+      "title": "Wire up Shopify API once token received",
+      "source": "DASHBOARD",
+      "status": "blocked",
+      "progress": "Waiting on g7"
     }
   ],
   "blockers": [
@@ -115,16 +131,21 @@
       "status": "Reported to Jay",
       "note": "Jay will delete once EZ4X4 is officially a sponsor",
       "category": "ez4x4"
+    },
+    {
+      "id": "b3",
+      "title": "Shopify API access",
+      "status": "Need owner",
+      "note": "Brian needs to install Robin Dashboard app",
+      "category": "ez4x4"
     }
   ],
   "businessHealth": {
     "ez4x4": {
-      "revenue": "$6.28M/month",
+      "label": "Waiting for Shopify API",
+      "status": "Connect API for live data",
       "affiliates": 71,
-      "affiliateGoal": 100,
-      "forumRank": 18,
-      "forumRankGoal": 10,
-      "assets": 29
+      "affiliateGoal": 100
     },
     "founderChat": {
       "price": "$29.99/month",

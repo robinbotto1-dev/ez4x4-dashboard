@@ -761,13 +761,20 @@ async function showWorkspaceContent(workspace, workspaceId) {
         
         <!-- BUSINESS HEALTH -->
         <div class="health-grid">
-          <div class="health-card">
+          <div class="health-card ${health.ez4x4?.label ? 'pending' : ''}">
             <div class="health-header">🚙 EZ4X4</div>
-            <div class="health-stat">${health.ez4x4?.revenue || '$6.28M/mo'}</div>
-            <div class="health-metrics">
-              <span>Affiliates: ${health.ez4x4?.affiliates || 71}/${health.ez4x4?.affiliateGoal || 100}</span>
-              <span>Forum: #${health.ez4x4?.forumRank || 18} (goal: #${health.ez4x4?.forumRankGoal || 10})</span>
-            </div>
+            ${health.ez4x4?.revenue ? `
+              <div class="health-stat">${health.ez4x4.revenue}</div>
+              <div class="health-metrics">
+                <span>Affiliates: ${health.ez4x4?.affiliates || 0}/${health.ez4x4?.affiliateGoal || 100}</span>
+                <span>Forum: #${health.ez4x4?.forumRank || '?'}</span>
+              </div>
+            ` : `
+              <div class="health-pending">${health.ez4x4?.label || 'No data'}</div>
+              <div class="health-metrics">
+                <span>${health.ez4x4?.status || 'Connect Shopify API'}</span>
+              </div>
+            `}
           </div>
           <div class="health-card">
             <div class="health-header">💬 Founder Chat</div>
