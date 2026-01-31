@@ -1,6 +1,6 @@
 {
-  "status": "available",
-  "task": "Ready",
-  "updatedAt": "2026-01-31T22:35:30.351Z",
-  "details": "Tasks now hyperlink to docs"
+  "status": "working",
+  "task": "Adding click-to-copy on IDs",
+  "updatedAt": "2026-01-31T22:37:50.490Z",
+  "details": "ID tags copy to clipboard on click"
 }
