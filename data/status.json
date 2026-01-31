@@ -1,6 +1,6 @@
 {
-  "status": "online",
-  "task": "Live updates confirmed ✓",
-  "updatedAt": "2026-01-31T20:58:49.890Z",
-  "details": "Auto-refresh working. Status updates every 30 seconds without page reload."
+  "status": "idle",
+  "task": "Idle demo - watch me change!",
+  "updatedAt": "2026-01-31T20:59:32.564Z",
+  "details": "This is the blue idle status. Will turn green in about 15 seconds..."
 }
