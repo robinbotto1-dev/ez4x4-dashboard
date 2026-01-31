@@ -405,6 +405,10 @@ body {
 
 /* Responsive */
 @media (max-width: 768px) {
+  body {
+    flex-direction: column;
+  }
+  
   .sidebar {
     width: 100%;
     height: auto;
@@ -416,19 +420,44 @@ body {
     display: flex;
     overflow-x: auto;
     margin-top: 16px;
+    gap: 8px;
   }
   
   .nav-links li {
     margin-bottom: 0;
-    margin-right: 8px;
+    flex-shrink: 0;
+  }
+  
+  .nav-links a {
+    padding: 10px 14px;
+    white-space: nowrap;
+    font-size: 14px;
   }
   
   .content {
     margin-left: 0;
     padding: 16px;
+    width: 100%;
   }
   
   .last-updated {
     display: none;
+  }
+  
+  .section-header h2 {
+    font-size: 22px;
+  }
+  
+  .filters {
+    flex-wrap: wrap;
+  }
+  
+  .card-actions {
+    flex-wrap: wrap;
+  }
+  
+  .btn {
+    font-size: 13px;
+    padding: 8px 12px;
   }
 }
