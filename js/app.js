@@ -556,14 +556,31 @@ function updateStatusWidget(data) {
     const now = new Date();
     const diffMin = Math.floor((now - updated) / 60000);
     
-    if (diffMin < 1) {
-      timeEl.textContent = 'just now';
-    } else if (diffMin < 60) {
-      timeEl.textContent = `${diffMin}m ago`;
-    } else if (diffMin < 1440) {
-      timeEl.textContent = `${Math.floor(diffMin/60)}h ago`;
+    // Freshness indicator
+    widget.classList.remove('fresh', 'recent', 'stale');
+    if (diffMin < 5) {
+      widget.classList.add('fresh');  // Green - very recent
+      timeEl.title = 'Status is current';
+    } else if (diffMin < 15) {
+      widget.classList.add('recent'); // Yellow - reasonably recent
+      timeEl.title = 'Status may be slightly outdated';
     } else {
-      timeEl.textContent = updated.toLocaleDateString();
+      widget.classList.add('stale');  // Red - potentially stale
+      timeEl.title = 'Status may be outdated - Robin might be busy or idle';
+    }
+    
+    if (diffMin < 1) {
+      timeEl.textContent = '🟢 just now';
+    } else if (diffMin < 5) {
+      timeEl.textContent = `🟢 ${diffMin}m ago`;
+    } else if (diffMin < 15) {
+      timeEl.textContent = `🟡 ${diffMin}m ago`;
+    } else if (diffMin < 60) {
+      timeEl.textContent = `🔴 ${diffMin}m ago`;
+    } else if (diffMin < 1440) {
+      timeEl.textContent = `🔴 ${Math.floor(diffMin/60)}h ago`;
+    } else {
+      timeEl.textContent = `🔴 ${updated.toLocaleDateString()}`;
     }
   }
 }
