@@ -1,6 +1,6 @@
 {
-  "status": "available",
-  "task": "Ready",
-  "updatedAt": "2026-02-01T00:25:52.021Z",
-  "details": "Heartbeat OK"
+  "status": "working",
+  "task": "Updating morning brief cron",
+  "updatedAt": "2026-02-01T00:42:23.176Z",
+  "details": "Adding dashboard update + link"
 }
