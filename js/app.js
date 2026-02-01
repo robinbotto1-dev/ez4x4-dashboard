@@ -600,11 +600,26 @@ async function refreshStatus(event) {
   
   await loadStatus();
   
-  btn.textContent = '✓ Updated!';
+  // Also check pulse to verify system is alive
+  try {
+    const pulseRes = await fetch('data/pulse.json?t=' + Date.now());
+    if (pulseRes.ok) {
+      const pulse = await pulseRes.json();
+      const pulseAge = (Date.now() - new Date(pulse.timestamp).getTime()) / 1000;
+      if (pulseAge < 60) {
+        btn.textContent = '✓ Verified live!';
+      } else {
+        btn.textContent = '⚠️ Pulse stale';
+      }
+    }
+  } catch (e) {
+    btn.textContent = '✓ Updated';
+  }
+  
   setTimeout(() => {
     btn.textContent = '↻ Refresh Status';
     btn.disabled = false;
-  }, 1500);
+  }, 2000);
 }
 
 // Poll status every 10 seconds
