@@ -1,0 +1,23 @@
+{
+  "updatedAt": "2026-01-31T00:54:00.000Z",
+  "scratchpad": [
+    {
+      "id": 1,
+      "note": "Dashboard system working well - Gabriel likes it",
+      "addedAt": "2026-01-31T00:54:00.000Z"
+    }
+  ],
+  "ideas": [
+    {
+      "id": 1,
+      "idea": "Add Shopify revenue widget once API is connected",
+      "addedAt": "2026-01-31T00:54:00.000Z"
+    },
+    {
+      "id": 2,
+      "idea": "Maybe add a quick-add form for tasks directly in dashboard",
+      "addedAt": "2026-01-31T00:54:00.000Z"
+    }
+  ],
+  "revisit": []
+}
