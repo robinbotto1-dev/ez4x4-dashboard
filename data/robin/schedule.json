@@ -1,0 +1,46 @@
+{
+  "updatedAt": "2026-01-31T00:43:00.000Z",
+  "automations": [
+    {
+      "id": "morning-briefing",
+      "name": "Morning Briefing",
+      "description": "Updates dashboard + sends Telegram summary with priorities and dashboard link",
+      "schedule": "8:00 AM daily",
+      "destination": "Telegram",
+      "enabled": true
+    },
+    {
+      "id": "ez4x4-morning-intel",
+      "name": "EZ4X4 Morning Intel",
+      "description": "Competitor monitoring, content opportunities, posts to Notion + Telegram summary",
+      "schedule": "8:30 AM weekdays",
+      "destination": "Notion + Telegram",
+      "enabled": true
+    },
+    {
+      "id": "ez4x4-forum-engagement",
+      "name": "Forum Engagement Report",
+      "description": "Scrapes forums for response opportunities, generates draft replies",
+      "schedule": "9:00 AM daily",
+      "destination": "Dashboard + Telegram",
+      "enabled": true
+    },
+    {
+      "id": "ez4x4-afternoon-recap",
+      "name": "Afternoon Recap",
+      "description": "Day summary + strategic questions for you",
+      "schedule": "4:30 PM weekdays",
+      "destination": "Telegram",
+      "enabled": true
+    }
+  ],
+  "reminders": [
+    {
+      "id": "shopify-api-reminder",
+      "name": "Get Shopify API token",
+      "description": "Ask Brian to install Robin Dashboard app in Shopify",
+      "scheduled": "Monday, Feb 3 at 9:00 AM",
+      "destination": "Telegram"
+    }
+  ]
+}

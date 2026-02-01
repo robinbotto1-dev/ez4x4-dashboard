@@ -39,6 +39,7 @@ const workspaces = {
     dataPath: 'data/robin',
     navItems: [
       { id: 'robin-dashboard', icon: '🏠', label: 'Dashboard' },
+      { id: 'robin-schedule', icon: '⏰', label: 'Schedule' },
       { id: 'robin-history', icon: '📜', label: 'Full History' }
     ]
   }
@@ -658,6 +659,8 @@ function handleNavClick(sectionId, workspaceId, event) {
   } else if (workspaceId === 'robin') {
     if (sectionId === 'robin-history') {
       showRobinHistory();
+    } else if (sectionId === 'robin-schedule') {
+      showRobinSchedule();
     } else {
       showWorkspaceContent(workspaces.robin, 'robin');
     }
@@ -940,6 +943,65 @@ async function openFCDoc(filename) {
 
 function hideWorkspaceComingSoon() {
   location.reload();
+}
+
+async function showRobinSchedule() {
+  const content = document.querySelector('.content');
+  
+  let schedule = { automations: [], reminders: [] };
+  try {
+    const res = await fetch('data/robin/schedule.json?t=' + Date.now());
+    if (res.ok) schedule = await res.json();
+  } catch (e) {}
+  
+  const automations = schedule.automations || [];
+  const reminders = schedule.reminders || [];
+  
+  content.innerHTML = `
+    <section class="section active">
+      <header class="section-header">
+        <h2>⏰ Robin's Schedule</h2>
+        <p>Automated tasks and reminders</p>
+      </header>
+      
+      <!-- AUTOMATIONS -->
+      <div class="schedule-section">
+        <h3>🔄 Daily Automations</h3>
+        <div class="schedule-list">
+          ${automations.map(a => `
+            <div class="schedule-item ${a.enabled ? '' : 'disabled'}">
+              <div class="schedule-time">${a.schedule}</div>
+              <div class="schedule-info">
+                <div class="schedule-name">${a.name}</div>
+                <div class="schedule-desc">${a.description}</div>
+              </div>
+              <div class="schedule-dest">${a.destination}</div>
+              <div class="schedule-status">${a.enabled ? '✓ Active' : 'Paused'}</div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+      
+      <!-- REMINDERS -->
+      ${reminders.length > 0 ? `
+      <div class="schedule-section">
+        <h3>🔔 Upcoming Reminders</h3>
+        <div class="schedule-list">
+          ${reminders.map(r => `
+            <div class="schedule-item reminder">
+              <div class="schedule-time">${r.scheduled}</div>
+              <div class="schedule-info">
+                <div class="schedule-name">${r.name}</div>
+                <div class="schedule-desc">${r.description}</div>
+              </div>
+              <div class="schedule-dest">${r.destination}</div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+      ` : ''}
+    </section>
+  `;
 }
 
 async function showRobinHistory() {
