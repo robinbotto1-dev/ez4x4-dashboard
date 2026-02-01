@@ -1,6 +1,6 @@
 {
-  "status": "working",
-  "task": "Heartbeat check",
-  "updatedAt": "2026-02-01T00:25:45.904Z",
-  "details": "Quick check"
+  "status": "available",
+  "task": "Ready",
+  "updatedAt": "2026-02-01T00:25:52.021Z",
+  "details": "Heartbeat OK"
 }
