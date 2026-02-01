@@ -1,0 +1,109 @@
+{
+  "updatedAt": "2026-01-31T01:01:00.000Z",
+  "permissions": {
+    "canDoFreely": [
+      "Research and analysis (competitors, market, trends)",
+      "Content drafts (blog posts, social, email templates)",
+      "Organizing files and documentation",
+      "Updating dashboard data",
+      "Running scrapers and data collection",
+      "Building internal tools and scripts",
+      "Code commits to our repos",
+      "Notion updates and organization",
+      "SEO analysis and keyword research",
+      "Creating outreach templates (not sending)"
+    ],
+    "needsApproval": [
+      "Sending emails externally",
+      "Posting to social media",
+      "Any external communication",
+      "Spending money",
+      "Deleting important files",
+      "Changes to live sites",
+      "Contacting partners/influencers"
+    ]
+  },
+  "autonomousQueue": [
+    {
+      "id": "a1",
+      "task": "Build 100-directory launch list for Founder Chat",
+      "type": "research",
+      "impact": "high",
+      "shipIt": true,
+      "estimatedTime": "2 hours",
+      "output": "Spreadsheet/doc with all directories + submission requirements"
+    },
+    {
+      "id": "a2",
+      "task": "SEO gap analysis - find keywords competitors rank for",
+      "type": "research",
+      "impact": "high",
+      "shipIt": true,
+      "estimatedTime": "1 hour",
+      "output": "List of 20+ keyword opportunities with search volume"
+    },
+    {
+      "id": "a3",
+      "task": "Scrape competitor reviews for pain points",
+      "type": "research",
+      "impact": "medium",
+      "shipIt": true,
+      "estimatedTime": "1 hour",
+      "output": "Summary doc with common complaints and opportunities"
+    },
+    {
+      "id": "a4",
+      "task": "Write 3 blog post drafts for EZ4X4",
+      "type": "content",
+      "impact": "high",
+      "shipIt": false,
+      "estimatedTime": "2 hours",
+      "output": "3 draft posts ready for review"
+    },
+    {
+      "id": "a5",
+      "task": "Hunt emails for top 10 YouTube influencers",
+      "type": "research",
+      "impact": "medium",
+      "shipIt": true,
+      "estimatedTime": "1 hour",
+      "output": "Contact list with emails and channel stats"
+    },
+    {
+      "id": "a6",
+      "task": "Create influencer outreach email templates",
+      "type": "content",
+      "impact": "medium",
+      "shipIt": false,
+      "estimatedTime": "30 min",
+      "output": "3 email templates for different influencer tiers"
+    },
+    {
+      "id": "a7",
+      "task": "Add remaining accelerators to Founder Chat database",
+      "type": "data",
+      "impact": "high",
+      "shipIt": true,
+      "estimatedTime": "3 hours",
+      "output": "programs.json with 50 total programs"
+    }
+  ],
+  "ideasBacklog": [
+    {
+      "id": "i1",
+      "idea": "Build price monitoring system for competitor products",
+      "addedAt": "2026-01-31"
+    },
+    {
+      "id": "i2",
+      "idea": "Create automated forum response system",
+      "addedAt": "2026-01-31"
+    },
+    {
+      "id": "i3",
+      "idea": "Build email template library for all use cases",
+      "addedAt": "2026-01-31"
+    }
+  ],
+  "overnightLog": []
+}

@@ -39,6 +39,7 @@ const workspaces = {
     dataPath: 'data/robin',
     navItems: [
       { id: 'robin-dashboard', icon: '🏠', label: 'Dashboard' },
+      { id: 'robin-autonomous', icon: '🌙', label: 'Overnight' },
       { id: 'robin-schedule', icon: '⏰', label: 'Schedule' },
       { id: 'robin-history', icon: '📜', label: 'Full History' }
     ]
@@ -661,6 +662,8 @@ function handleNavClick(sectionId, workspaceId, event) {
       showRobinHistory();
     } else if (sectionId === 'robin-schedule') {
       showRobinSchedule();
+    } else if (sectionId === 'robin-autonomous') {
+      showRobinAutonomous();
     } else {
       showWorkspaceContent(workspaces.robin, 'robin');
     }
@@ -943,6 +946,102 @@ async function openFCDoc(filename) {
 
 function hideWorkspaceComingSoon() {
   location.reload();
+}
+
+async function showRobinAutonomous() {
+  const content = document.querySelector('.content');
+  
+  let data = { permissions: {}, autonomousQueue: [], ideasBacklog: [], overnightLog: [] };
+  try {
+    const res = await fetch('data/robin/autonomous.json?t=' + Date.now());
+    if (res.ok) data = await res.json();
+  } catch (e) {}
+  
+  const permissions = data.permissions || {};
+  const queue = data.autonomousQueue || [];
+  const ideas = data.ideasBacklog || [];
+  const log = data.overnightLog || [];
+  
+  content.innerHTML = `
+    <section class="section active">
+      <header class="section-header">
+        <h2>🌙 Overnight / Autonomous Work</h2>
+        <p>What Robin can do while you sleep</p>
+      </header>
+      
+      <!-- PERMISSIONS -->
+      <div class="auto-section permissions-grid">
+        <div class="perm-card can-do">
+          <h3>✅ Can Do Freely</h3>
+          <ul>
+            ${(permissions.canDoFreely || []).map(p => `<li>${p}</li>`).join('')}
+          </ul>
+        </div>
+        <div class="perm-card needs-approval">
+          <h3>⚠️ Needs Approval</h3>
+          <ul>
+            ${(permissions.needsApproval || []).map(p => `<li>${p}</li>`).join('')}
+          </ul>
+        </div>
+      </div>
+      
+      <!-- AUTONOMOUS QUEUE -->
+      <div class="auto-section">
+        <h3>📋 Autonomous Queue</h3>
+        <p class="section-desc">Tasks I'll work on overnight - sorted by impact</p>
+        <div class="auto-queue">
+          ${queue.map(t => `
+            <div class="auto-task ${t.shipIt ? 'ship-it' : 'review-first'}">
+              <div class="auto-task-header">
+                <span class="auto-id">${t.id}</span>
+                <span class="auto-title">${t.task}</span>
+                <span class="auto-tag ${t.shipIt ? 'ship' : 'review'}">${t.shipIt ? '🚀 Ship it' : '👀 Review first'}</span>
+              </div>
+              <div class="auto-task-meta">
+                <span class="auto-type">${t.type}</span>
+                <span class="auto-impact">Impact: ${t.impact}</span>
+                <span class="auto-time">~${t.estimatedTime}</span>
+              </div>
+              <div class="auto-output">→ ${t.output}</div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+      
+      <!-- IDEAS BACKLOG -->
+      <div class="auto-section">
+        <h3>💡 Ideas Backlog</h3>
+        <p class="section-desc">Things to explore when I have time</p>
+        <div class="ideas-list">
+          ${ideas.map(i => `
+            <div class="idea-item">
+              <span class="idea-id">${i.id}</span>
+              <span class="idea-text">${i.idea}</span>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+      
+      <!-- OVERNIGHT LOG -->
+      <div class="auto-section">
+        <h3>📝 Overnight Log</h3>
+        <p class="section-desc">What I did while you slept</p>
+        ${log.length > 0 ? `
+          <div class="overnight-log">
+            ${log.map(entry => `
+              <div class="log-entry">
+                <div class="log-date">${entry.date}</div>
+                <div class="log-items">
+                  ${entry.completed.map(c => `<div class="log-item">✓ ${c}</div>`).join('')}
+                </div>
+                ${entry.outputs ? `<div class="log-outputs">Outputs: ${entry.outputs.join(', ')}</div>` : ''}
+              </div>
+            `).join('')}
+          </div>
+        ` : '<p class="empty">No overnight work logged yet</p>'}
+      </div>
+    </section>
+  `;
 }
 
 async function showRobinSchedule() {
