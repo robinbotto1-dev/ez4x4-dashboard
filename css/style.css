@@ -2444,3 +2444,19 @@ body.locked .status-widget {
     gap: 8px;
   }
 }
+
+/* Daily updated timestamp */
+.daily-updated {
+  margin-left: auto;
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: normal;
+}
+.daily-list.completed {
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--border);
+}
+.daily-list.completed li {
+  color: var(--text-muted);
+}

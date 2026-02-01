@@ -828,6 +828,7 @@ async function showWorkspaceContent(workspace, workspaceId) {
             <div class="daily-header">
               <span class="daily-icon">📋</span>
               <span class="daily-title">Yesterday</span>
+              ${yesterday.updated ? `<span class="daily-updated">${yesterday.updated}</span>` : ''}
             </div>
             <p class="daily-summary">${yesterday.summary || 'No recap available'}</p>
             ${yesterday.highlights ? `
@@ -840,11 +841,17 @@ async function showWorkspaceContent(workspace, workspaceId) {
             <div class="daily-header">
               <span class="daily-icon">🎯</span>
               <span class="daily-title">Today's Focus</span>
+              ${today.updated ? `<span class="daily-updated">${today.updated}</span>` : ''}
             </div>
             <p class="daily-summary">${today.focus || 'No focus set'}</p>
             ${today.priorities ? `
               <ul class="daily-list">
                 ${today.priorities.map(p => `<li>${p}</li>`).join('')}
+              </ul>
+            ` : ''}
+            ${today.completed ? `
+              <ul class="daily-list completed">
+                ${today.completed.map(c => `<li>${c}</li>`).join('')}
               </ul>
             ` : ''}
           </div>
